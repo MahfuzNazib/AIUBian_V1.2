@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--===========================Bootstrap 4 CDN Link=======================================-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!--CSS Link-->
+    <link href="/views/Signup/style.css" rel="stylesheet" type="text/css">
+
+    <!--Google Font Link-->
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
+    <title>Sign Up</title>
+
+    <style>
+            .bg{
+                background: url("aiub-bg.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+            .container{
+                margin-top: 7%;
+            }
+
+            h2{
+                font-family: 'Bree Serif', serif;
+            }
+
+            input{
+                margin-right: 100px;
+            }
+            .inputLength{
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+    </style>
+</head>
+<body class="bg">
+    <center>
+        <div  class="container bg card">
+            <h2>Add New Admin</h2>
+            <br>
+                <!--Name-->
+                <div class="inputLength">
+                    <input type="text" class="form-control" placeholder="Full Name" name="name" required><br>
+                <!--Email-->
+                <div >
+                    <input type="email" class="form-control" placeholder="Valid Email" name="email" required><br>
+                </div>
+                
+                <div >
+                    <input type="number" class="form-control" placeholder="Phone No" name="aiub_id" required><br>
+                </div>
+
+                <div >
+                    <input type="text" class="form-control" placeholder="Set Username" name="userName" required>
+                </div><br>
+
+                <div >
+                    <input type="password" class="form-control" placeholder="Set Password" name="Password" required>
+                </div><br>
+            </div>
+            <div>
+                <input type="submit" value="SIGN UP" class="btn btn-success "><br><br><br><br><br><br>
+            </div>
+           
+            Have Already Account? <a href="/login">Login here</a>
+        </div>
+    </center>  
+   
+</body>
+</html>
