@@ -8,7 +8,7 @@ var login = require('./controllers/login');
 var signup = require('./controllers/signup');
 var adminHome = require('./controllers/adminhome');
 var addAdmin = require('./controllers/addAdmin');
-var studentHome = require('./controllers/studentHome');
+var student = require('./controllers/student');
 //var logout = require('./controllers/logout');
 //Configuration
 
@@ -21,7 +21,8 @@ app.use('/login',login);
 app.use('/signup', signup);
 app.use('/adminhome', adminHome);
 app.use('/addAdmin',addAdmin);
-app.use('/studentHome', studentHome);
+app.use('/studentHome', student);
+
 
 //Routers
 app.get('/', function(request, response){

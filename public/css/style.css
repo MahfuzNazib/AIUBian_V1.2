@@ -1,0 +1,52 @@
+/*
+=================================================
+            Student Profile Desing
+=================================================
+*/
+
+.studentProfileBody{
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: rgb(212, 211, 211);
+}
+
+.coverPhoto{
+    background-image: url("/public/images/d906440e3b8f66f4ba707e3dccb38f59.gif");
+}
+
+.displayName{
+    font-family: 'Lobster', cursive;
+    font-size: 35px;
+    color: rgb(0, 0, 0);
+}
+
+.profileInformation{
+    margin-left: 20%;
+    margin-right: 10%;
+    border: 2px;
+}
+
+.infoHeading{
+    width: 30%;
+    font-family: 'Cuprum', sans-serif;
+    font-size: 20px;
+    text-align: left;
+}
+
+.infoItems{
+    font-family: 'El Messiri', sans-serif;
+    font-size: 18px;
+    text-align: left;
+}
+
+.fotter
+{
+    width: 100%;
+    background-color: rgb(9, 37, 63);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    color: aliceblue;
+    height: 30px;
+    text-align: center;
+}
+
