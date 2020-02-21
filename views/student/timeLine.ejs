@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--===========================Bootstrap 4 CDN Link=======================================-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!--Google Fonts Link-->
+    <link href="https://fonts.googleapis.com/css?family=Cuprum|El+Messiri|Lobster&display=swap" rel="stylesheet">
+
+    <!--CSS Link-->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/App.css">
+    <link rel="stylesheet" href="/css/Admin.css">
+
+    <title>My TimeLine</title>
+</head>
+<body class="studentProfileBody">
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+        
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="navbar-brand" href="#">  Nazib Mahfuz</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        
+                      <a class="nav-link" href="/studentHome">
+                        <button class="btn btn-light">
+                            Home
+                        </button>
+                        <span class="sr-only">(current)</span></a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <button type="button" class="btn btn-light">
+                                Time Line
+                            </button>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <button type="button" class="btn btn-light">
+                                Messages <span class="badge badge-primary">4</span>
+                            </button>
+                        </a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"> 
+                            <button type="button" class="btn btn-light">
+                                Notification <span class="badge badge-primary">15</span>
+                            </button>
+                        </a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <button class="btn btn-light">
+                                Settings
+                            </button>
+                        </a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">
+                            <button class="btn btn-danger">
+                                Logout
+                            </button>
+                        </a>
+                    </li>
+    
+                </div>
+            </nav>
+            <br><br><br>
+    </div>
+
+    <div class="row">
+        <!--Left Part-->
+        <div class="col-sm-2"> <!--Empty Side--></div>
+        <!--Middle Part-->
+        <div class="col-sm-8 container bg card">
+            <!--TimeLine Section/Post Section-->
+            <form>
+                <div class="form-group">
+                  <label for="comment">Create Post</label>
+                  <textarea class="form-control" rows="5" id="comment" placeholder="Whats on Your Mind?"></textarea>
+                </div>
+              </form>
+              <table border="0">
+                  <tr>
+                    <td>
+                        <center>
+                            <span class="btn btn-primary btn-file">
+                                Add Photo <input type="file">
+                            </span>
+                        </center>
+                    </td>
+
+                    <td>
+                        <center>
+                            <span class="btn btn-primary btn-file">
+                                Add Video <input type="file">
+                            </span>
+                        </center>
+                    </td>
+
+                    <td>
+                        <center>
+                            <span class="btn btn-info">
+                                Post
+                            </span>
+                        </center>
+                    </td>
+                  </tr>
+              </table>
+              <br>
+        </div>
+
+        <br><br>
+        <!--Right Part-->
+        <div class="col-sm-2"><!--Empty Side--></div>
+    </div>
+    <br>
+
+    <div class="row">
+        <!--Left Part-->
+        <div class="col-sm-2"> <!--Empty Side--></div>
+        <!--Middle Part-->
+        <div class="col-sm-8 container bg card">
+            <!--My Post List-->
+            <br>
+            <div class="container bg card">
+                <br>
+                <table border="0">
+                    <!--Name,Status Row-->
+                    <tr>
+                        <td width="2%"><img src="/images/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
+                        <td width="90%">
+                            <text class="name">Nazib Mahfuz</text>
+                            <span class="badge badge-pill badge-secondary">Student</span>
+                        </td>
+                        <!--Edit/Delete Post Button-->
+                        <td width="10%">
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <span>.</span>
+                                  <span>.</span>
+                                  <span>.</span>
+                                  
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="#"><button class="btn btn-primary">Edit Post</button></a>
+                                  <a class="dropdown-item" href="#"><button class="btn btn-danger">Delete Post </button></a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!--Date Time Row-->
+                    <tr>
+                        <td></td>
+                        <td>25-02-2020, <i>06:21:36 PM</i></td>
+                    </tr>
+
+                    <!--Image/Video/Text Row-->
+                    <tr>
+                        <td></td>
+                        <td>
+                            <img src="/images/1easuM.jpg" height="300px" width="70%">
+                        </td>
+                    </tr>
+                </table>
+                <table border="0">
+                    <tr>
+                        
+                        <td>
+                            <center>
+                                <button class="btn btn-light">
+                                    Like <span class="badge badge-primary">15</span>
+                                </button>
+                            </center>
+                        </td>
+                        <td>
+                            <button class="btn btn-light">
+                                Comments <span class="badge badge-primary">15</span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+            </div>
+            <br>
+        </div>
+        <br><br>
+        <!--Right Part-->
+        <div class="col-sm-2"><!--Empty Side--></div>
+        <br><br>
+    </div>  
+    <br>
+    
+    <!--Another Post-->
+
+    <div class="row">
+        <!--Left Part-->
+        <div class="col-sm-2"> <!--Empty Side--></div>
+        <!--Middle Part-->
+        <div class="col-sm-8 container bg card">
+            <!--My Post List-->
+            <br>
+            <div class="container bg card">
+                <br>
+                <table border="0">
+                    <!--Name,Status Row-->
+                    <tr>
+                        <td width="2%"><img src="/images/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
+                        <td width="90%">
+                            <text class="name">Nazib Mahfuz</text>
+                            <span class="badge badge-pill badge-secondary">Student</span>
+                        </td>
+                        <!--Edit/Delete Post Button-->
+                        <td width="10%">
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <span>.</span>
+                                  <span>.</span>
+                                  <span>.</span>
+                                  
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="#"><button class="btn btn-primary">Edit Post</button></a>
+                                  <a class="dropdown-item" href="#"><button class="btn btn-danger">Delete Post </button></a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!--Date Time Row-->
+                    <tr>
+                        <td></td>
+                        <td>25-02-2020, <i>06:21:36 PM</i></td>
+                    </tr>
+
+                    <!--Image/Video/Text Row-->
+                    <tr>
+                        <td></td>
+                        <td>
+                            <img src="/images/yBhCqU.jpg.png" height="300px" width="70%">
+                        </td>
+                    </tr>
+                </table>
+                <table border="0">
+                    <tr>
+                        
+                        <td>
+                            <center>
+                                <button class="btn btn-light">
+                                    Like <span class="badge badge-primary">15</span>
+                                </button>
+                            </center>
+                        </td>
+                        <td>
+                            <button class="btn btn-light">
+                                Comments <span class="badge badge-primary">15</span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+            </div>
+            <br>
+        </div>
+        <br><br>
+        <!--Right Part-->
+        <div class="col-sm-2"><!--Empty Side--></div>
+        <br><br>
+    </div>
+</body>
+</html>

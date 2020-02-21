@@ -14,5 +14,8 @@ router.get('/editProfile', function(req, res){
     res.render('student/editProfile');
 });
 
+router.get('/timeLine', function(req, res){
+    res.render('student/timeLine');
+});
 
 module.exports = router;
