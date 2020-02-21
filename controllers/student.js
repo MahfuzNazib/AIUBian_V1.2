@@ -18,4 +18,13 @@ router.get('/timeLine', function(req, res){
     res.render('student/timeLine');
 });
 
+router.get('/chat', function(req, res){
+    res.render('student/chat');
+});
+
+router.get('/settings', function(req, res){
+    res.render('student/settings');
+});
+
+
 module.exports = router;
