@@ -115,7 +115,7 @@
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">All Posts
+                  <a href="/adminhome/allPosts">All Posts
 
                   </a>
                 </li>
@@ -166,6 +166,16 @@
           <li class="header-menu">
             <span>Extra</span>
           </li>
+
+          <li>
+            <a href="/adminhome/profile">
+              <i class="fa fa-book"></i>
+              <span>My Profile</span>
+              
+            </a>
+          </li>
+
+
           <li>
             <a href="#">
               <i class="fa fa-book"></i>
@@ -195,7 +205,7 @@
         <i class="fa fa-bell"></i>
         <span class="badge badge-pill badge-warning notification">3</span>
       </a>
-      <a href="#">
+      <a href="/adminhome/chat">
         <i class="fa fa-envelope"></i>
         <span class="badge badge-pill badge-success notification">7</span>
       </a>
@@ -216,36 +226,43 @@
       <table border="1" width="100%">
           <tr>
               <td>
-                  <center>
+                <center>
                     <h5>Total Posts</h5>
-                  </center>
+                </center>
               </td>
 
-              <td >
-                <td>
-                    <center>
-                      <h5>Total Members</h5>
-                    </center>
-                </td>
+              <td ><center>
+                    <h5>Total Members</h5>
+                </center>
             </td>
 
-            <td >
-                <td>
-                    <center>
-                      <h5>Total Admins</h5>
-                    </center>
-                </td>
+            <td > <center>
+                    <h5>Total Admins</h5>
+                </center>
             </td>
           </tr>
 
           <!--Data Show from Database-->
 
-          <tr height="150px">
+          <tr height="100px">
             <td>
-                <div class="btn btn-success">
-                    50
+                <div class="showTotalPost">
+                    2050
                 </div>
             </td>
+
+            <td>
+                <div class="showTotalPost">
+                    1059
+                </div>
+            </td>
+
+            <td>
+                <div class="showTotalPost">
+                    12
+                </div>
+            </td>
+            
           </tr>
       </table>
     </div>

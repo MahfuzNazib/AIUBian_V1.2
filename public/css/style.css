@@ -108,3 +108,33 @@ Check Box Design
     /* Move the check mark back when checked */
 	text-indent: 0;
 }
+
+
+/*
+=============Dashbord Design=============
+*/
+
+.showTotalPost{
+    height: 120px;
+    width: 100%;
+    background-color: rgba(1, 36, 65, 0.931);
+    color: white;
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 8%;
+    
+}
+
+.showTotalPost:hover{
+    background-color: blue;
+    transition-duration: 0.5s;
+}
+
+.postDetails
+{
+    font-family: 'Cuprum', sans-serif;
+    font-size: large;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
