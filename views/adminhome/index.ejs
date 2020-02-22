@@ -1,591 +1,269 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--===========================Bootstrap 4 CDN Link=======================================-->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    
-    <!--CSS Link-->
-    <link rel="stylesheet" type="text/css" href="/views/adminhome/App.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
     <title>Admin Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <style>
-        
-.btn-group .btn
-{
-    background-color : green;
-    border:none;
-    color: aliceblue;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-style: italic;
-    font-size: 15px;
-    cursor: pointer;
-    float: left;
-  
-}
+    <!--Google Fonts Link-->
+    <link href="https://fonts.googleapis.com/css?family=Cuprum|El+Messiri|Lobster&display=swap" rel="stylesheet">
 
-.btn-group .btn:hover
-{
-    background-color: white;
-    border: 1px solid green;
-    border-radius: 5px;
-    font-style: normal;
-    color: black;
-    transition-duration: 0.8s;
-}
+    <!--My Script-->
+    <script type="text/javascript" src="/script/script.js"></script>
+    <script type="text/javascript" src="/script/adminJS.js"></script>
 
+    <!--My CSS Link-->
+    <link rel="stylesheet" href="/css/chat.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/App.css">
+    <link rel="stylesheet" href="/css/Admin.css">
+    <link rel="stylesheet" href="/css/adminStyle.css">
 
-.form-Center
-{
-    margin-top: 0%;
-    margin-left: 30%;
-    margin-right: 20%;
-    background-color: white;
-
-}
-.font-Create
-{
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 45px;
-    color: rgb(20, 5, 226);
-    font-style: bold;
-    
-}
-.font-Normal
-{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-style: normal;
-    font-size: 18px;
-    color: black;
-    text-align: right;
-}
-
-.txt-Box
-{
-    width:100%;
-    height: 38px;
-    border: 1px solid #B9D0B1;
-    border-radius: 5px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 18px;
-    transition: 0.5s;
-}
-.txt-Box:hover
-{
-    cursor: text;
-    border: 2px solid green;
-    background-color: rgb(245, 245, 245);
-}
-
-.btn-Confirm
-{
-    background-color: aqua;
-    color: black;
-    border: 0px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 20px;
-    height: 45px;
-    width: 180px;
-    transition: 0.5s;
-}
-.btn-Confirm:hover
-{
-    background-color: blue;
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.btn-Reset
-{
-    background-color:rgba(192, 36, 96, 0.884);
-    color: white;
-    border: none;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 20px;
-    height: 45px;
-    width: 180px;
-    transition: 0.5s;
-}
-
-.btn-Reset:hover
-{
-    background-color: rgb(165, 3, 3);
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.edit-button
-{
-    cursor: pointer;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: green;
-    font-style: bold;
-    transition: 0.5s;
-}
-.edit-button:hover
-{
-    background-color: darkcyan;
-    color: white;
-    border-radius: 15px;
-    height: 30px;
-    width: 90px;
-}
-
-.body-margin
-{
-    margin-left: 10%;
-    margin-right: 10%;
-    
-}
-
-.link-Button
-{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 16px;
-    color: black;
-}
-
-.link-Button:hover
-{
-    height: 40px;
-    widows: 60px;
-    background-color: blue;
-    color: white;
-    border-radius: 10px;
-    transition: 0.2s;
-}
-
-.Profile-Header
-{
-    background-color: rgb(17, 17, 122);
-    height: 50px;
-    width: 100%;
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 14px;
-}
-
-div.sticky
-{
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-}
-
-.profile-HeaderButton
-{
-    background-color: rgb(17, 17, 122);
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 18px;
-    height: 30px;
-    width: 85px;
-    border: none;
-    color: white;
-    cursor: pointer;
-    transition-duration: 0.5s;
-    text-decoration: none;
-}
-
-.profile-HeaderButton:hover
-{
-    background-color: rgb(65, 65, 182);
-    border-block-color: 1px solid white;
-    border-radius: 5px;
-    color: white;
-    text-decoration: none;
-}
-
-/*a:link, a:visited
-{
-    background-color: rgb(17, 17, 122);
-    color: white;
-    padding: 14px 25px;
-    height: 30px;
-    width: 85px;
-    border:none;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    transition: 0.5s;
-}
-a:hover,a:active
-{
-    background-color: rgb(65, 65, 182);
-    border-block-color: 1px solid white;
-    border-radius: 5px;
-}*/
-/**************************
-****************************/
-/*Student Profile Design*/
-
-.profileMarks
-{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 16px;
-    font-style: italic;
-}
-
-.profileMarks:hover
-{
-    height: 30px;
-    width: 200px;
-    background-color: burlywood;
-    color: black;
-}
-
-.fotter 
-{
-    height: 30px;
-    width: 100%;
-    background-color: black;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 15px;
-    color: white;
-    transition: 0.5s;
-    cursor: default;
-}
-
-.fotter:hover
-{
-    background-color: rgb(34, 33, 33);
-    border-radius: 10px;
-    font-size: 18px;
-}
-
-.searchBox
-{
-    width: 130px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-image: url('Images/search.png');
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-}
-.searchBox:focus
-{
-    width: 100%;
-}
-
-.posts
-{
-    border: 1px solid black;
-    width: 50px;
-
-}
-
-.posts-Date
-{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-style: bold;
-    color: black;
-    font-size: 15px;
-}
-
-.tblbgColor-Posts
-{
-    background-color: rgba(230, 230, 230, 0.932);
-}
-
-.tblLoad
-{
-    transition: 0.5s;
-}
-
-.postArea
-{
-    width: 100%;
-    height: 100px;
-    border-color: 1px solid rgb(129, 223, 215);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 15px;
-    font-style: normal;
-    cursor: text;
-    transition: 0.5s;
-}
-.postArea:hover
-{
-    border-color: rgb(42, 202, 149);
-    border: 2px solid rgb(42,202,149);
-    border-radius: 5px;
-}
-
-.postsButton
-{
-    background-color: rgb(251, 251, 251);
-    border: none;
-    border-radius: 10px;
-    height: 40px;
-    width: 90px;
-    transition: 0.5s;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-.postsButton:hover
-{
-    background-color: rgb(205, 211, 197);
-    font-size: 18px;
-}
-/***********************************
-************************************
-**********************************/
-/*CSS Design For Login Page*/
- .table
- {
-     margin-top: 10%;
-     margin-left: 40%;
-     margin-right: 20%;
-     background-color: black;
-     color: white;
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     font-size: 16px;
- }
-
-
- .login-input
- {
-     border: none;
-     border-bottom: 1px solid white;
-     background: transparent;
-     outline: none;
-     height: 40px;
-     width: 100%;
-     color: white;
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     font-size: 16px;
-     transition: 0.5s;
-     text-align: center;
- }
- .login-input:active
- {
-     transition: 0.5s;
- }
-
- .login-button
- {
-     border: 1px solid white;
-     border-radius: 15px;
-     background-color: white;
-     color: black;
-     font-family: Verdana, Geneva, Tahoma, sans-serif;
-     font-size: 20px;
-     height: 40px;
-     width: 100%;
-     cursor: pointer;
- }
-
- .login-button:hover
- {
-     background-color: rgb(0, 94, 122);
-     color: white;
-     transition: 0.5s;
-     border: none;
-     border-radius: 25px;
- }
-
-
- .login-link
- {
-     color: hsl(39, 85%, 39%);
-     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-     font-size: 14px;
-     text-decoration: none;
-     
- }
- .login-link:hover
- {
-     color: red;
-    
- }
-
- .errorMessage
- {
-     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-     font-size: 14px;
-     color: white;
-     background-color: red;
-     height: 25px;
-     width: 80px;
-     border: 1px solid red;
-     border-radius: 5px;
-     /*transition: 0.5s;*/
-     transition-duration: 0.5s;
- }
-
- .table-header
- {
-     background-color: rgb(6, 52, 73);
-     color: white;
-     height: 35px;
-     width: 100%;
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     size: 18px;
-     text-align: center;
- }
  
- .btn-Block
- {
-     height: 35px;
-     width: 50px;
-     background-color: rgb(165, 3, 3);
-     font-family: Verdana, Geneva, Tahoma, sans-serif;
-     size: 16px;
- }
- /*
- *******************************
- ***TimeLine Design**********
- */
 
- .post
-{
-    background-color: rgb(182, 182, 141);
-    
-}
-    </style>
 </head>
+
 <body>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Nazib Mahfuz</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
-                </li>
-
-                
-
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Members 
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <a href="#">Admin Dashbord</a>
+        <div id="close-sidebar">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="sidebar-header">
+        <div class="user-pic">
+          <img class="img-responsive img-rounded" src="/images/n2.jpg"
+            alt="User picture">
+        </div>
+        <div class="user-info">
+          <span class="user-name">
+              <!--Admin Name Shown-->
+              <strong>Nazib Mahfuz</strong>
+          </span>
+          <span class="user-role">Administrator</span>
+          <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span>Online</span>
+          </span>
+        </div>
+      </div>
+      <!-- sidebar-header  -->
+      <div class="sidebar-search">
+        <div>
+          <div class="input-group">
+              <!--Searching Here-->
+            <input type="text" class="form-control search-menu" placeholder="Search...">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- sidebar-search  -->
+      <div class="sidebar-menu">
+        <ul>
+          <li class="header-menu">
+            <span>General</span>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-tachometer-alt"></i>
+              <span>Dashboard</span>
+              <span class="badge badge-pill badge-warning">New</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">Dashboard 1
+                    <span class="badge badge-pill badge-success">Pro</span>
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Faculty</a>
-                    <a class="dropdown-item" href="#">Alumni</a>
-                    <a class="dropdown-item" href="#">Student</a>
                 </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Posts 
-                    </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">All Post</a>
-                    <a class="dropdown-item" href="#">Faculty Post</a>
-                    <a class="dropdown-item" href="#">Alumni Post</a>
-                    <a class="dropdown-item" href="#">Student Post</a>
+                <li>
+                  <a href="#">Dashboard 2</a>
                 </li>
-
-                <li class="nav-item">
-                  <a class="nav-link" href="#">My TimeLine</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/addAdmin">Add Admin</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Logout</a>
+                <li>
+                  <a href="#">Dashboard 3</a>
                 </li>
               </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
             </div>
-          </nav>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-shopping-cart"></i>
+              <span>Posts</span>
+              <span class="badge badge-pill badge-danger">3</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">All Posts
+
+                  </a>
+                </li>
+                <li>
+                  <a href="#">Faculty Posts</a>
+                </li>
+                <li>
+                  <a href="#">Alumni Posts</a>
+                </li>
+
+                <li>
+                    <a href="#">Student Posts</a>
+                </li>
+
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="far fa-gem"></i>
+              <span>Members List</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">All Member</a>
+                </li>
+                <li>
+                  <a href="#">Faculties List</a>
+                </li>
+                <li>
+                  <a href="#">Alumnies Listt</a>
+                </li>
+                <li>
+                  <a href="#">Students List</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-book"></i>
+              <span>Admins Panel</span>
+            </a>
+            
+          </li>
+          
+          <li class="header-menu">
+            <span>Extra</span>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-book"></i>
+              <span>My Timeline</span>
+              
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-calendar"></i>
+              <span>Messages</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-folder"></i>
+              <span>Add New Admin</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- sidebar-menu  -->
     </div>
-    <br><br>
-    <div class="container">
-        <center>
-            Posts
-        </center>
-
-        <table border="0" width="100%">
-            <tr class="table-header">
-                <td>Post ID</td>
-                <td>Post Date</td>
-                <td>Name</td>
-                <td>Details</td>
-                <td>Image</td>
-                <td>Actions</td>    
-            </tr>
-
-            <tr>
-                <td><center>01</center></td>
-                <td><center>25.02.2020</center></td>
-                <td><center>Nazib Mahfuz</center></td>
-                <td><center>hjdsbcvjdhfsvcdf</center></td>
-                <td><center><img src="/views/adminhome/18890887-Cute-cartoon-illustration-of-a-soldier-Stock-Illustration-army.jpg" width="150px" height="150px"></center></td>
-                <td><center><button class="btn-Delete">Delete Post</button></center></td>
-                
-            </tr>
-            
-
-            <tr>
-                <td><center>01</center></td>
-                <td><center>25.02.2020</center></td>
-                <td><center>Nazib Mahfuz</center></td>
-                <td><center>hjdsbcvjdhfsvcdf</center></td>
-                <td><center><img src="/views/adminhome/18890887-Cute-cartoon-illustration-of-a-soldier-Stock-Illustration-army.jpg" width="150px" height="150px"></center></td>
-                <td><center><button class="btn-Delete">Delete Post</button></center></td>
-                
-            </tr>
-            
-
-            <tr>
-                <td><center>01</center></td>
-                <td><center>25.02.2020</center></td>
-                <td><center>Nazib Mahfuz</center></td>
-                <td><center>hjdsbcvjdhfsvcdf</center></td>
-                <td><center><img src="/views/adminhome/18890887-Cute-cartoon-illustration-of-a-soldier-Stock-Illustration-army.jpg" width="150px" height="150px"></center></td>
-                <td><center><button class="btn-Delete">Delete Post</button></center></td>
-                
-            </tr>
-            
-
-            <tr>
-                <td><center>01</center></td>
-                <td><center>25.02.2020</center></td>
-                <td><center>Nazib Mahfuz</center></td>
-                <td><center>hjdsbcvjdhfsvcdf</center></td>
-                <td><center><img src="/views/adminhome/18890887-Cute-cartoon-illustration-of-a-soldier-Stock-Illustration-army.jpg" width="150px" height="150px"></center></td>
-                <td><center><button class="btn-Delete">Delete Post</button></center></td>
-            </tr>
-            
-        </table>
+    <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+      <a href="#">
+        <i class="fa fa-bell"></i>
+        <span class="badge badge-pill badge-warning notification">3</span>
+      </a>
+      <a href="#">
+        <i class="fa fa-envelope"></i>
+        <span class="badge badge-pill badge-success notification">7</span>
+      </a>
+      <a href="#">
+        <i class="fa fa-cog"></i>
+        <span class="badge-sonar"></span>
+      </a>
+      <a href="#">
+        <i class="fa fa-power-off"></i>
+      </a>
     </div>
+  </nav>
+  <!-- sidebar-wrapper  -->
+  <main class="page-content">
+    <div class="container-fluid">
+      <h2>Dashboard</h2>
+      <hr>
+      <table border="1" width="100%">
+          <tr>
+              <td>
+                  <center>
+                    <h5>Total Posts</h5>
+                  </center>
+              </td>
+
+              <td >
+                <td>
+                    <center>
+                      <h5>Total Members</h5>
+                    </center>
+                </td>
+            </td>
+
+            <td >
+                <td>
+                    <center>
+                      <h5>Total Admins</h5>
+                    </center>
+                </td>
+            </td>
+          </tr>
+
+          <!--Data Show from Database-->
+
+          <tr height="150px">
+            <td>
+                <div class="btn btn-success">
+                    50
+                </div>
+            </td>
+          </tr>
+      </table>
+    </div>
+
+
+    
+    </div>
+
+  </main>
+  <!-- page-content" -->
+</div>
+<!-- page-wrapper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    
 </body>
+
 </html>
