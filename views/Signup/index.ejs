@@ -18,86 +18,126 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <!--CSS Link-->
-    <link href="/views/Signup/style.css" rel="stylesheet" type="text/css">
+    
+    <link rel="stylesheet" href="/css/App.css">
+    
+    
 
     <!--Google Font Link-->
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
     <title>Sign Up</title>
 
-    <style>
-            .bg{
-                background: url("aiub-bg.jpg");
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-            }
-            .container{
-                margin-top: 7%;
-            }
-
-            h2{
-                font-family: 'Bree Serif', serif;
-            }
-
-            input{
-                margin-right: 100px;
-            }
-            .inputLength{
-                margin-left: 10%;
-                margin-right: 10%;
-            }
-    </style>
 </head>
-<body class="bg">
-    <center>
-        <div  class="container bg card">
-            <h2>Create Accout</h2>
-            <br>
-                <!--Name-->
-                <div class="inputLength">
-                    <input type="text" class="form-control" placeholder="Your Full Name" name="name" required><br>
-                <!--Email-->
-                <div >
-                    <input type="email" class="form-control" placeholder="Valid Email" name="email" required><br>
-                </div>
+<body>
+    <br><br><br>
+
+    <div class="container bg card">
+        <form method="POST">
+            <table border="0" class="form-Center">
+                <tr class="header">
+                    <td>
+                        <img src="/images/Logo.png">
+                        
+                    </td>
+                    <td>
+                        <h1 class=font-Create>Create Account</h1>
+                    </td>
+                </tr>
                 
-                <div >
-                    <input type="text" class="form-control" placeholder="AIUB ID" name="aiub_id" required><br>
-                </div>
-
-                <div >
-                    <select class="form-control">
-                        <option disabled selected hidden> Select Status</option>
-                        <option>Faculty</option>
-                        <option>Alumni</option>
-                        <option>Student</option>
-                    </select>
-                </div> <br>
-
-                <div >
-                    <select class="form-control">
-                        <option disabled selected hidden> Select Department</option>
-                        <option>Faculty of Science & Technology</option>
-                        <option>Faculty of Engineering</option>
-                        <option>Faculty of Business Administation</option>
-                        <option>Faculty Arts and Social Science</option>
-                    </select>
-                </div> <br>
-
-                <div >
-                    <input type="text" class="form-control" placeholder="Set Username" name="userName" required>
-                </div><br>
-
-                <div >
-                    <input type="password" class="form-control" placeholder="Set Password" name="Password" required>
-                </div><br>
-            </div>
-            <div>
-                <input type="submit" value="SIGN UP" class="btn btn-success "><br><br><br><br><br><br>
-            </div>
-           
-            Have Already Account? <a href="/login">Login here</a>
-        </div>
-    </center>  
-   
+                <tr height="60px">
+                    <td class="font-Normal">
+                        Full Name
+                    </td>
+                    <td>
+                        <input type="text" name ="fullName" class="txt-Box" id="name"  >
+                    </td>
+                    <td id="msgName"></td>
+                </tr>
+        
+                <tr height="60px">
+                    <td class="font-Normal">
+                        AIUB ID
+                    </td>
+                    <td>
+                        <input type="text" name ="aiubId" class="txt-Box" id="id"  >
+                    </td>
+                    <td id="msgID"></td>
+                </tr>
+                
+                <tr height="60px">
+                    <td class="font-Normal">
+                        Status
+                    </td>
+                    <td>
+                        <select class="txt-Box" id="chkStatus" name="status" >
+                            <option disabled selected hidden>Select Status</option>
+                            <option>Faculty</option>
+                            <option>Alumni</option>
+                            <option>Student</option>
+                        </select>
+                    </td>
+                    <td id="msgStatus"></td>
+                </tr>
+        
+                <tr height="60px">
+                    <td class="font-Normal">
+                        Department
+                    </td>
+                    <td>
+                        <select class="txt-Box" id="chkStatus" name="department">
+                            <option disabled selected hidden>Select Department</option>
+                            <option>Faculty of Science and Technology</option>
+                            <option>Faculty of Engineering</option>
+                            <option>Faculty of Business Administrator</option>
+                            <option>Faculty of Arts and Social Science</option>
+                        </select>
+                    </td>
+                    <td id="msgStatus"></td>
+                </tr>
+        
+        
+                <tr height="60px">
+                    <td class="font-Normal">
+                        Email
+                    </td>
+                    <td>
+                        <input type="email" name="mail" class="txt-Box" id="email" required >
+                    </td>
+                    <td id="msgEmail"></td>
+                </tr>
+        
+        
+                <tr height="60px">
+                    <td class="font-Normal">
+                        Set Username
+                    </td>
+                    <td>
+                       <input type="text" class="txt-Box" name="username" id="username"> 
+                    </td>
+                    <td id="msgUserName"></td>
+                </tr>
+        
+                <tr height="60px">
+                    <td class="font-Normal">
+                        Password
+                    </td>
+                    <td>
+                        <input type="password" class="txt-Box" name="password" id="password" >
+                    </td>
+                    <td id="msgPassword"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <center>
+                            <input type="submit" name="submit" class="btn btn-success" value="SignUp"><br><br>
+                            <a href="/login">Go to Login</a>
+                        </center>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <br><br>
+    </div>
 </body>
 </html>

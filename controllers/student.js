@@ -6,7 +6,10 @@ router.get('/', function(req, res){
 });
 
 router.get('/studentProfile', function(req, res){
-    res.render('student/studentProfile');
+    // res.render('student/studentProfile',{
+    //     dept : 'CSE'
+    // });
+    res.render('student/studentProfile')
 });
 
 
