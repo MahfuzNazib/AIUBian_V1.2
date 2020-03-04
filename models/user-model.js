@@ -56,12 +56,12 @@ module.exports= {
 			}
 		});
 	},
+	
 	validate: function(user, callback){
-		var sql ="SELECT * FROM user where username=? and password=?";
+		var sql ="SELECT * from login WHERE username=? and password=?";
 		db.getResults(sql, [user.username, user.password], function(results){
-
 			if(results.length > 0){
-				//callback({userlist: results});
+				console.log(results[0]);
 				callback(results[0]);
 			}else{
 				callback(null);
@@ -110,7 +110,7 @@ module.exports= {
 	//Register New Users
 	insertLogin: function(user, callback){
 		var sql = "insert into login values(?,?,?,?,?,?,?,?)";
-		db.execute(sql, [null, user.name, user.aiubId, user.username, user.password, user.email, user.department, user.status], function(status){
+		db.execute(sql, [null, user.name, user.aiubId, user.username, user.password, user.email, user.department, user.type], function(status){
 			if(status){
 				callback(true);
 			}else{
@@ -119,18 +119,7 @@ module.exports= {
 		});
 	},
 
-	//Insert into Userinfo Table
-	// insertUserInfo: function(user, callback){
-	// 	var sql = "insert into userinfo values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	// 	db.execute(sql, [null, user.name, user.email, user.aiubId, null, null, null, user.department, null, null, null, null, null, null, null, null, null, null, null, null, null, null], function(status){
-	// 		if(status){
-	// 			callback(true);
-	// 		}else{
-	// 			callback(false);
-	// 		}
-	// 	});
-	// },
-
+	//Inset Into UserInfo Table
 	insertUserInfo: function(user, callback){
 		var sql = "INSERT INTO userinfo VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		db.execute(sql, [null, user.name, user.email, user.aiubId, null, null, null, user.department, null, null, null, null, null, null, null, null, null, null, null, null, null, null], function(status){

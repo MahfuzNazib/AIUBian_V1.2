@@ -1,24 +1,52 @@
 var express = require('express');
 var router = express.Router();
+var userModel = require.main.require('./models/user-model');
+
+
 
 router.get('/', function(req, res){
     res.render('login/index');
 });
 
 router.post('/', function(req, res){
-    // if(req.body.userName == req.body.password){
-    //     res.redirect('/signup');
-    // }
-    if(req.body.userName == "Admin" && req.body.password == "Admin"){
-        res.redirect('/adminhome');
-    }
-    
-    else if(req.body.userName == "111" && req.body.password == "111"){
-        res.redirect('/studentHome');
-    }
-    else{
-        res.send('Invalid Username or Password');
-    }
+    var user = {
+        username : req.body.username,
+        password : req.body.password
+    };
+
+
+
+    userModel.validate(user, function(status){
+        
+        console.log(user);
+        //Student
+        if(status.type == "Student"){
+            
+            res.redirect('/studentHome');
+        }
+        
+        //Alumni
+        else if(status.type == "Alumni"){
+            
+            res.send('Alumni Page Request');
+        }
+
+        //Faculty
+        else if(status.type == "Faculty"){
+            
+            res.send('Faculty Page Request');
+        }
+
+        //Admin
+        else if(status.type == "Admin"){
+            
+            res.redirect('/adminhome');
+        }
+
+        else{
+            res.send('Invalid Username or Password');
+        }
+    });
 });
 
 module.exports = router;

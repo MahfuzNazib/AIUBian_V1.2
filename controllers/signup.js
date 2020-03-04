@@ -10,7 +10,7 @@ router.post('/', function(req, res){
     var user = {
         name : req.body.fullName,
         aiubId : req.body.aiubId,
-        status : req.body.status,
+        type : req.body.type,
         department : req.body.department,
         email : req.body.mail,
         username : req.body.username,
