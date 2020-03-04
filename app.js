@@ -4,6 +4,7 @@ var express = require('express');
 var app = express();
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var login = require('./controllers/login');
 var signup = require('./controllers/signup');
 var adminHome = require('./controllers/adminhome');
@@ -17,6 +18,8 @@ app.set('view engine', 'ejs');
 //MiddleWare
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(cookieParser());
+
 app.use('/login',login);
 app.use('/signup', signup);
 app.use('/adminhome', adminHome);

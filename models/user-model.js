@@ -47,7 +47,7 @@ module.exports= {
 		});
 	},
 	getAll : function(callback){
-		var sql = "select * from user";
+		var sql = "SELECT * from userinfo,login where login.email = userinfo.email ";
 		db.getResults(sql, null, function(results){
 			if(results.length > 0){
 				callback(results);
@@ -57,11 +57,27 @@ module.exports= {
 		});
 	},
 	
+
+	//getData by Email
+
+	getByEmail : function(user, callback){
+		var sql = "SELECT * FROM userinfo, login WHERE login.username = ? AND (userinfo.email = login.email) ";
+		db.getResults(sql, [user.username], function(results){
+			if(results.length > 0){
+				callback(results);
+			}
+			else{
+				callback(null);
+			}
+		});
+	},
+
+
 	validate: function(user, callback){
 		var sql ="SELECT * from login WHERE username=? and password=?";
 		db.getResults(sql, [user.username, user.password], function(results){
 			if(results.length > 0){
-				console.log(results[0]);
+				
 				callback(results[0]);
 			}else{
 				callback(null);
@@ -97,8 +113,10 @@ module.exports= {
 	},
 
 	getByUname: function(username, callback){
-		var sql = "select * from user where username=?";
+		//var sql = "SELECT * FROM login WHERE username = ?";.
+		var sql = "SELECT * FROM userinfo, login WHERE login.username = ?";
 		db.getResults(sql, [username], function(results){
+			console.log(results);
 			if(results.length > 0){
 				callback(results[0]);
 			}else{

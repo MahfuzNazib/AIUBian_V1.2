@@ -21,7 +21,7 @@ router.post('/', function(req, res){
         console.log(user);
         //Student
         if(status.type == "Student"){
-            
+            res.cookie('username', req.body.username);
             res.redirect('/studentHome');
         }
         

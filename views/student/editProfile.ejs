@@ -35,7 +35,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a class="navbar-brand" href="/studentHome">  Nazib Mahfuz</a>
+            <a class="navbar-brand" href="/studentHome">  <%= user.name%> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -153,7 +153,7 @@
                                 Name
                             </td>
                             <td>
-                                <input type="text" class="txt-Box" name ="name" value="">
+                                <input type="text" class="txt-Box" name ="name" value="<%= user.name %>">
                             </td>
                         </tr>
 
@@ -162,7 +162,7 @@
                                 E-mail
                             </td>
                             <td>
-                                <input type="email" class="txt-Box" name="mail" value="" disabled>
+                                <input type="email" class="txt-Box" name="mail" value="<%= user.email %>" disabled>
                             </td>
                         </tr>
 
@@ -171,7 +171,7 @@
                                 Phone No
                             </td>
                             <td>
-                                <input type="number" class="txt-Box" name="phone" value="">
+                                <input type="number" class="txt-Box" name="phone" value="<%= user.phone %>">
                             </td>
                         </tr>
 
@@ -180,7 +180,7 @@
                                 Facebook
                             </td>
                             <td>
-                                <input type="url" class="txt-Box" name="phone" value="">
+                                <input type="url" class="txt-Box" name="facebook" value="<%= user.facebook %>">
                             </td>
                         </tr>
                         <tr>
@@ -188,7 +188,7 @@
                                 Linked In
                             </td>
                             <td>
-                                <input type="url" class="txt-Box" name="phone" value="">
+                                <input type="url" class="txt-Box" name="linkedin" value="<%= user.linkedin %>">
                             </td>
                         </tr>
                     </table>
@@ -212,7 +212,7 @@
                             </td>
                             <td>
                                 <select class="txt-Box" name="dept">
-                                    <option><?=$data["Dept"]; ?></option>
+                                    <option> <%= user.department %> </option>
                                     <option value="Faculty of Science & Technology">Faculty of Science & Technology</option>
                                     <option value="Faculty of Engineering">Faculty of Engineering</option>
                                     <option value="Faculty of Art Social Sciences">Faculty of Art Social Sciences</option>
@@ -227,7 +227,7 @@
                             </td>
                             <td>
                                 <select class="txt-Box" name = "program">
-                                    <option><?=$data['Program']; ?></option>
+                                    <option><%= user.program %></option>
                                     <option value="CSE">CSE</option>
                                     <option value="CSSE">CSSE</option>
                                     <option value="CIS">CIS</option>
@@ -245,7 +245,7 @@
                                 Semester
                             </td>
                             <td>
-                                <input type="number" class="txt-Box" name="semester" value="<?=$data['SemesterNo']; ?>">
+                                <input type="number" class="txt-Box" name="semester" value="<%= user.semester %>">
                             </td>
                         </tr>
                     </table>
@@ -268,7 +268,7 @@
                                 Add Skills
                             </td>
                             <td>
-                                <input type="text" name="skill" class="txt-Box" value="">
+                                <input type="text" name="skill" class="txt-Box" value="<%= user.skills %>">
                             </td>
                         </tr>
                     </table>
@@ -288,21 +288,21 @@
                     <br>
                     <table border="0" width="100%">
 
-                        <tr>
+                        <!-- <tr>
                            <td class="font-Normal" width="15%">
                                LinkedIn
                            </td>
                            <td>
-                               <input type="url" class="txt-Box" name ="txtLinkedIn" value="">
+                               <input type="url" class="txt-Box" name ="txtLinkedIn" value="<%= user.linkedin %>">
                            </td>
                         
-                       </tr>
+                       </tr> -->
                        <tr>
                            <td class="font-Normal" width="20%">
                                Github
                            </td>
                            <td>
-                               <input type="url" class="txt-Box" name ="txtGithub" value="">
+                               <input type="url" class="txt-Box" name ="txtGithub" value="<%= user.github %>">
                            </td>
                            
                        </tr>
@@ -312,7 +312,7 @@
                                StackOverflow
                            </td>
                            <td>
-                               <input type="url" class="txt-Box" name="txtStackOverflow" value="">
+                               <input type="url" class="txt-Box" name="txtStackOverflow" value="<%= user.stackoverflow %>">
                            </td>
                            
                        </tr>
@@ -322,26 +322,26 @@
                                Hacker Rank
                            </td>
                            <td>
-                               <input type="url" class="txt-Box" name="txtHackerRank" value="">
+                               <input type="url" class="txt-Box" name="txtHackerRank" value="<%= user.hackerrank %>">
                            </td>
                            
                        </tr>
-                       <tr>
+                       <!-- <tr>
                            <td class="font-Normal">
                                Online Judge
                            </td>
                            <td>
-                               <input type="url" class="txt-Box" name="OnlineJudge" value="">
+                               <input type="url" class="txt-Box" name="OnlineJudge" value="<%= user.stackoverflow %>">
                            </td>
                            
-                       </tr>
-                       <tr>
+                       </tr> -->
+                       <!-- <tr>
                            <td class="font-Normal">
                                IEEE
                            </td>
                            <td>
                                <input type="url" class="txt-Box" name="txtIEEE" value="">
-                           </td>
+                           </td> -->
                            
                        </tr>
                        <tr>
@@ -349,11 +349,11 @@
                                Portfolio
                            </td>
                            <td>
-                               <input type="url" class="txt-Box" name="txtPortfolio" value="">
+                               <input type="url" class="txt-Box" name="txtPortfolio" value="<%= user.Portfolio %>">
                            </td>
                            
                        </tr>
-                       <tr>
+                       <!-- <tr>
                            <td class="font-Normal">
                                Youtube
                            </td>
@@ -362,7 +362,7 @@
                                <input type="url" class="txt-Box" name="txtYoutube" value="">
                            </td>
                            
-                       </tr>
+                       </tr> -->
                    </table>
                     <br>
                 </div>

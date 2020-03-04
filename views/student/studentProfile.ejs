@@ -34,7 +34,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a class="navbar-brand" href="/studentHome">  Nazib Mahfuz</a>
+            <a class="navbar-brand" href="/studentHome">  <%= user.name%> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -109,7 +109,7 @@
                     <div class="container">
                         <img src="/images/n2.JPG" class="rounded-circle" height="200px" width="30%">
                     </div>
-                    <text class="displayName">Nazib Mahfuz</text>
+                    <text class="displayName"> <%= user.name%> </text>
                 </center>
                 <br>
                 <center>
@@ -139,7 +139,7 @@
                                 Email
                             </td>
                             <td class="infoItems">
-                                nazibmahfuz60@gmail.com
+                                <%= user.email%>
                             </td>
                         </tr>
 
@@ -148,7 +148,7 @@
                                 Phone No
                             </td>
                             <td class="infoItems">
-                                01777127618
+                                <%= user.phone%>
                             </td>
                         </tr>
 
@@ -157,7 +157,7 @@
                                 Facebook
                             </td>
                             <td class="infoItems">
-                                <a href="#">https://www.facebook.com</a>
+                                <a href="<%= user.facebook%>"><%= user.facebook%></a>
                             </td>
                         </tr>
 
@@ -166,7 +166,7 @@
                                 LinkedIn
                             </td>
                             <td class="infoItems">
-                                <a href="#">https://www.linkedin.com</a>
+                                <a href="<%= user.linkedin%>"><%= user.linkedin%></a>
                             </td>
                         </tr>
                     </table>
@@ -182,12 +182,22 @@
                 <div class="col-sm-8 bg card">
                     <div class="profileInformation">
                         <table border="0" width="100%">
+
+                            <tr>
+                                <td class="infoHeading">
+                                    AIUB ID
+                                </td>
+                                <td class="infoItems">
+                                    <%= user.aiub_id %>
+                                </td>
+                            </tr>
+
                             <tr>
                                 <td class="infoHeading">
                                     Department
                                 </td>
                                 <td class="infoItems">
-                                    Faculty of Science & Technology
+                                    <%= user.department %>
                                 </td>
                             </tr>
 
@@ -196,7 +206,7 @@
                                     Program
                                 </td>
                                 <td class="infoItems">
-                                    Computer Science & Engineering
+                                    <%= user.program %>
                                 </td>
                             </tr>
 
@@ -205,7 +215,7 @@
                                     Semester
                                 </td>
                                 <td class="infoItems">
-                                    10th
+                                    <%= user.semester %>
                                 </td>
                             </tr>
 
@@ -214,7 +224,7 @@
                                     Thesis Name
                                 </td>
                                 <td class="infoItems">
-                                    Music Player Based on Usee emotion using Vital Sensor
+                                    <%= user.thesisName %>
                                 </td>
                             </tr>
                         </table>
@@ -237,8 +247,7 @@
                                 Skills
                             </td>
                             <td class="infoItems">
-                                JavaScript,Node JS, Express, C#, Php,Database,Design Pattern,
-                                JavaScript,Node JS, Express, C#, Php,Database,Design Pattern
+                                <%= user.skills %>
                             </td>
                         </tr>
                     </table>
@@ -261,7 +270,7 @@
                                 Github
                             </td>
                             <td class="infoItems">
-                                <a href="#">https://github.com/MahfuzNazib</a>
+                                <a href="<%= user.github %>"><%= user.github %></a>
                             </td>
                         </tr>
 
@@ -270,7 +279,7 @@
                                 Stack Overflow
                             </td>
                             <td class="infoItems">
-                                <a href="#">https://www.facebook.com</a>
+                                <a href="<%= user.stackoverflow %>"> <%= user.stackoverflow %></a>
                             </td>
                         </tr>
 
@@ -279,25 +288,25 @@
                                 Hacker Rank
                             </td>
                             <td class="infoItems">
-                                <a href="#">https://www.facebook.com</a>
+                                <a href="<%= user.hackerrank %>"><%= user.hackerrank %></a>
                             </td>
                         </tr>
 
-                        <tr>
+                        <!-- <tr>
                             <td class="infoHeading">
                                 Online Judge
                             </td>
                             <td class="infoItems">
                                 <a href="#">https://www.linkedin.com</a>
                             </td>
-                        </tr>
+                        </tr> -->
 
                         <tr>
                             <td class="infoHeading">
                                 Portfolio
                             </td>
                             <td class="infoItems">
-                                <a href="#">https://www.linkedin.com</a>
+                                <a href="<%= user.portfolio %>"><%= user.portfolio %></a>
                             </td>
                         </tr>
                     </table>
