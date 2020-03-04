@@ -17,19 +17,33 @@ router.post('/', function(req, res){
         password : req.body.password
     }
 
-    
-
-    userModel.checkUsername(req.body.username, function(results){
+    userModel.checkEmail(req.body.mail, function(results){
         if(results){
-            res.send('This Username is already Taken.Try another username.');
+            res.send('This email have already an account. Try another email');
         }
-        else{
-            userModel.insert(user, function(status){
-                if(status){
-                    res.send('Successfully Registered');
+        else
+        {
+            userModel.checkUsername(req.body.username, function(results){
+                if(results){
+                    res.send('This Username is already Taken.Try another username.');
                 }
                 else{
-                    res.send('Registration is not Completed. Try again Later!!');
+                    userModel.insertLogin(user, function(status){
+                        if(status){
+                            //res.send('Successfully Registered');
+                            userModel.insertUserInfo(user, function(status){
+                                if(status){
+                                    res.send('Successfully Registered');
+                                }
+                                else{
+                                    res.send('Problem on Userinfo Table')
+                                }
+                            });
+                        }
+                        else{
+                            res.send('Registration is not Completed. Try again Later!!');
+                        }
+                    });
                 }
             });
         }

@@ -83,6 +83,19 @@ module.exports= {
 		});
 	},
 
+	//check Email is Available or Not
+	checkEmail : function(email, callback){
+		var sql = "select name from login where email = ?";
+		db.getResults(sql, [email], function(results){
+			if(results.length > 0){
+				callback(true);
+			}
+			else{
+				callback(false);
+			}
+		});
+	},
+
 	getByUname: function(username, callback){
 		var sql = "select * from user where username=?";
 		db.getResults(sql, [username], function(results){
@@ -95,7 +108,7 @@ module.exports= {
 	},
 
 	//Register New Users
-	insert: function(user, callback){
+	insertLogin: function(user, callback){
 		var sql = "insert into login values(?,?,?,?,?,?,?,?)";
 		db.execute(sql, [null, user.name, user.aiubId, user.username, user.password, user.email, user.department, user.status], function(status){
 			if(status){
@@ -105,6 +118,31 @@ module.exports= {
 			}
 		});
 	},
+
+	//Insert into Userinfo Table
+	// insertUserInfo: function(user, callback){
+	// 	var sql = "insert into userinfo values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	// 	db.execute(sql, [null, user.name, user.email, user.aiubId, null, null, null, user.department, null, null, null, null, null, null, null, null, null, null, null, null, null, null], function(status){
+	// 		if(status){
+	// 			callback(true);
+	// 		}else{
+	// 			callback(false);
+	// 		}
+	// 	});
+	// },
+
+	insertUserInfo: function(user, callback){
+		var sql = "INSERT INTO userinfo VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		db.execute(sql, [null, user.name, user.email, user.aiubId, null, null, null, user.department, null, 0, null, null, null, null, null, null, null, null, null, null, null, null], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
+
+
 	update : function(user, callback){
 		var sql = "update user set username=?, password=?, type=? where id=?";
 		db.execute(sql, [user.username, user.password, user.type, user.id], function(status){
