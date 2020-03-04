@@ -133,7 +133,7 @@ module.exports= {
 
 	insertUserInfo: function(user, callback){
 		var sql = "INSERT INTO userinfo VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		db.execute(sql, [null, user.name, user.email, user.aiubId, null, null, null, user.department, null, 0, null, null, null, null, null, null, null, null, null, null, null, null], function(status){
+		db.execute(sql, [null, user.name, user.email, user.aiubId, null, null, null, user.department, null, null, null, null, null, null, null, null, null, null, null, null, null, null], function(status){
 			if(status){
 				callback(true);
 			}else{
