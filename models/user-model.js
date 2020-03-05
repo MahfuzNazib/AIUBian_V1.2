@@ -114,7 +114,8 @@ module.exports= {
 
 	getByUname: function(username, callback){
 		//var sql = "SELECT * FROM login WHERE username = ?";.
-		var sql = "SELECT * FROM userinfo, login WHERE login.username = ?";
+		//var sql = "SELECT * FROM userinfo, login WHERE login.username = ?";
+		var sql = "SELECT * from userinfo where email = (SELECT email from login where username = ?)";
 		db.getResults(sql, [username], function(results){
 			console.log(results);
 			if(results.length > 0){
@@ -150,12 +151,14 @@ module.exports= {
 	},
 
 
-	update : function(user, callback){
-		var sql = "update user set username=?, password=?, type=? where id=?";
-		db.execute(sql, [user.username, user.password, user.type, user.id], function(status){
+	updateStudent : function(data, callback){
+		var sql = "UPDATE userinfo SET name=?,aiub_id=?,phone=?,facebook=?,linkedin=?,department=?,program=?,semester=?,thesisName=?,skills=?,github=?,stackoverflow=?,hackerrank=?,portfolio=? WHERE email = ?";
+		db.execute(sql, [data.name, data.aiub_id, data.phone, data.facebook, data.linkedin, data.department, data.program, data.semester, data.thesisName, data.skills, data.github, data.stackoverflow,data.hackerrank,  data.portfolio,  data.email], function(status){
 			if(status){
+				console.log(status);
 				callback(true);
 			}else{
+				console.log(status);
 				callback(false);
 			}
 		});

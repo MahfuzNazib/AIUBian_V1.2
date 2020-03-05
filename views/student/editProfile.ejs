@@ -141,6 +141,7 @@
         </div>
 
         <br>
+        <form method="POST">
         <!--Information Part-->
         <div class="row">
             <div class="col-sm-2"></div>
@@ -162,7 +163,7 @@
                                 E-mail
                             </td>
                             <td>
-                                <input type="email" class="txt-Box" name="mail" value="<%= user.email %>" disabled>
+                                <input type="email" class="txt-Box" name="email" value="<%= user.email %>" readonly>
                             </td>
                         </tr>
 
@@ -206,12 +207,23 @@
                 <div class="profileInformation">
                     <br>
                     <table border="0" width="100%">
+
+                        <tr>
+                            <td class="font-Normal">
+                                AIUB ID
+                            </td>
+                            <td>
+                                <input type="number" class="txt-Box" name="aiub_id" value="<%= user.aiub_id %>">
+                            </td>
+                        </tr>
+
+
                         <tr>
                             <td class="font-Normal" width="15%">
                                 Department
                             </td>
                             <td>
-                                <select class="txt-Box" name="dept">
+                                <select class="txt-Box" name="department">
                                     <option> <%= user.department %> </option>
                                     <option value="Faculty of Science & Technology">Faculty of Science & Technology</option>
                                     <option value="Faculty of Engineering">Faculty of Engineering</option>
@@ -248,6 +260,15 @@
                                 <input type="number" class="txt-Box" name="semester" value="<%= user.semester %>">
                             </td>
                         </tr>
+
+                        <tr>
+                            <td class="font-Normal">
+                                Thesis Name
+                            </td>
+                            <td>
+                                <input type="number" class="txt-Box" name="thesisName" value="<%= user.thesisName %>">
+                            </td>
+                        </tr>
                     </table>
                     <br>
                 </div>
@@ -268,7 +289,7 @@
                                 Add Skills
                             </td>
                             <td>
-                                <input type="text" name="skill" class="txt-Box" value="<%= user.skills %>">
+                                <input type="text" name="skills" class="txt-Box" value="<%= user.skills %>">
                             </td>
                         </tr>
                     </table>
@@ -302,7 +323,7 @@
                                Github
                            </td>
                            <td>
-                               <input type="url" class="txt-Box" name ="txtGithub" value="<%= user.github %>">
+                               <input type="url" class="txt-Box" name ="github" value="<%= user.github %>">
                            </td>
                            
                        </tr>
@@ -312,7 +333,7 @@
                                StackOverflow
                            </td>
                            <td>
-                               <input type="url" class="txt-Box" name="txtStackOverflow" value="<%= user.stackoverflow %>">
+                               <input type="url" class="txt-Box" name="Stackoverflow" value="<%= user.stackoverflow %>">
                            </td>
                            
                        </tr>
@@ -322,7 +343,7 @@
                                Hacker Rank
                            </td>
                            <td>
-                               <input type="url" class="txt-Box" name="txtHackerRank" value="<%= user.hackerrank %>">
+                               <input type="url" class="txt-Box" name="hackerrank" value="<%= user.hackerrank %>">
                            </td>
                            
                        </tr>
@@ -349,7 +370,7 @@
                                Portfolio
                            </td>
                            <td>
-                               <input type="url" class="txt-Box" name="txtPortfolio" value="<%= user.Portfolio %>">
+                               <input type="url" class="txt-Box" name="portfolio" value="<%= user.Portfolio %>">
                            </td>
                            
                        </tr>
@@ -363,23 +384,39 @@
                            </td>
                            
                        </tr> -->
+                       <br><br>
+
+                       <tr>
+                           <td >
+                               
+                           </td>
+                           
+                           <td>
+                               <center>
+                                   <input type="submit" class="btn btn-success" name="update" value="Update Profile">
+                                </center>
+                           </td>
+                           
+                       </tr>
                    </table>
+                </form>
                     <br>
                 </div>
             </div>
             <div class="col-sm-2"></div>            
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
                 <center>
-                    <button class="btn-Confirm" name="save">Save</button>
+                    
+                    <input type="submit" class="btn btn-success" value="Update Profile">
                 </center>
             </div>
             <div class="col-sm-4"></div>
 
-        </div>
+        </div> -->
 
 </body>
 </html>
