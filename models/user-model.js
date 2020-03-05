@@ -172,5 +172,21 @@ module.exports= {
 				callback(false);
 			}
 		});
+	},
+
+	//Insert Post
+
+	insertPost : function(createPost, callback){
+		console.log(createPost);
+		var sql = "INSERT INTO post VALUES(?,?,?,?,?,?,?,?,?)";
+		db.execute(sql, [null, createPost.postDate, createPost.email, createPost.type, createPost.text, createPost.images, createPost.video, createPost.postLike, createPost.username], function(status){
+			if(status){
+				
+				callback(true);
+			}
+			else{
+				callback(false);
+			}
+		});
 	}
 }

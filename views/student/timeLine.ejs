@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/App.css">
     <link rel="stylesheet" href="/css/Admin.css">
+    
 
     <title>My TimeLine</title>
 </head>
@@ -103,39 +104,43 @@
         <!--Middle Part-->
         <div class="col-sm-8 container bg card">
             <!--TimeLine Section/Post Section-->
-            <form>
+            <form method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="comment">Create Post</label>
-                  <textarea class="form-control" rows="5" id="comment" placeholder="Whats on Your Mind?"></textarea>
+                  <textarea class="form-control" rows="5" id="comment" name="text" placeholder="Whats on Your Mind?"></textarea>
                 </div>
-              </form>
               <table border="0">
                   <tr>
                     <td>
                         <center>
+                            <span class="btn btn-primary ">
+                                 <input type="file" name="image">
+                            </span>
+                        </center>
+
+                        <div id="imgName">
+                        </div>
+                    </td>
+
+                    <td>
+                        <center>
                             <span class="btn btn-primary btn-file">
-                                Add Photo <input type="file">
+                                Add Video <input type="file" name="video">
                             </span>
                         </center>
                     </td>
 
                     <td>
                         <center>
-                            <span class="btn btn-primary btn-file">
-                                Add Video <input type="file">
-                            </span>
-                        </center>
-                    </td>
-
-                    <td>
-                        <center>
-                            <span class="btn btn-info">
+                            <!-- <span class="btn btn-info" name="post">
                                 Post
-                            </span>
+                            </span> -->
+                            <input type="submit" value="Post" class="btn btn-info" name="post">
                         </center>
                     </td>
                   </tr>
               </table>
+            </form>
               <br>
         </div>
 
@@ -157,7 +162,7 @@
                 <table border="0">
                     <!--Name,Status Row-->
                     <tr>
-                        <td width="2%"><img src="/images/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
+                        <td width="2%"><img src="/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
                         <td width="90%">
                             <text class="name">Nazib Mahfuz</text>
                             <span class="badge badge-pill badge-secondary">Student</span>
@@ -189,7 +194,7 @@
                     <tr>
                         <td></td>
                         <td>
-                            <img src="/images/1easuM.jpg" height="300px" width="70%">
+                            <img src="/1easuM.jpg" height="300px" width="70%">
                         </td>
                     </tr>
                 </table>
@@ -235,7 +240,7 @@
                 <table border="0">
                     <!--Name,Status Row-->
                     <tr>
-                        <td width="2%"><img src="/images/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
+                        <td width="2%"><img src="/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
                         <td width="90%">
                             <text class="name">Nazib Mahfuz</text>
                             <span class="badge badge-pill badge-secondary">Student</span>
@@ -267,7 +272,7 @@
                     <tr>
                         <td></td>
                         <td>
-                            <img src="/images/yBhCqU.jpg.png" height="300px" width="70%">
+                            <img src="/yBhCqU.jpg.png" height="300px" width="70%">
                         </td>
                     </tr>
                 </table>

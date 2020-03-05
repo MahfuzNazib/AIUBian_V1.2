@@ -108,28 +108,23 @@
                 <br>
                 <center>
                     <div class="container">
-                        <img src="/images/n2.JPG" class="rounded-circle" height="200px" width="30%">
+                        <!-- <img src="/images/n2.JPG" class="rounded-circle" height="200px" width="30%"> -->
+                        <img src="/FB_Profile.jpg" class="rounded-circle" height="200px" width="30%">
                     </div>
                 </center>
                 <br>
                 <center>
                     <a href="/studentHome/studentProfile"><button class="btn btn-info">View Profile</button> </a>
                 </center>
+                <hr>
                 <!--Profile Picture File Choose-->
                 <center>
                 
-                    <br>
-                    <div class="input-group">
-                        
-                        <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="inputGroupFile01"
-                            aria-describedby="inputGroupFileAddon01">
-                          <label class="custom-file-label" for="inputGroupFile01">Choose Profile Picture</label>
-                        </div>
-                        <div class="input-group-prepend">
-                            <input type="submit" class="btn btn-success" value="Upload Profile Picture">
-                          </div>
-                      </div>
+                    <br>  
+                    <form method="POST" action="/upload" enctype="multipart/form-data">
+                        <input type="file" name="files" multiple>
+                        <button type="submit" class="btn btn-success">Upload Profile Picture</button>
+                    </form>
                 </center>
                 <br><br>
             </div>
