@@ -25,15 +25,12 @@ router.get('*', function(req, res, next){
 });
 
 router.get('/', function(req, res){
-    // userModel.getByUname(req.cookies['username'], function(userInfo){ 
-    //     userModel.getAllPost(req.cookies['username'], function(postInfo){ 
-    //         res.render('student/index', {postList : postInfo, userInfo : userInfo});
-    //     });
-    // });
-
     userModel.getAllData(function(result){
         userModel.getByUname(req.cookies['username'], function(userInfo){
-            res.render('student/index', {data : result, userInfo : userInfo});
+            userModel.notificationInfo(req.cookies['username'] , function(notifiInfo){
+                console.log(notifiInfo);
+                res.render('student/index', {data : result, userInfo : userInfo, notifiInfo: notifiInfo});
+            });
         });
     });
 });
@@ -54,9 +51,7 @@ router.get('/editProfile', function(req, res){
 
 
 
-
 //Post Method for Update Profile Data in editProfile Page
-
 router.post('/editProfile', function(req, res){
     var data = {
         name        : req.body.name,
@@ -87,18 +82,13 @@ router.post('/editProfile', function(req, res){
 });
 
 router.get('/timeLine', function(req, res){
-    // userModel.getByUname(req.cookies['username'], function(result){
-    //     res.render('student/timeLine',{user : result});
-    // });
     userModel.getMyPost(req.cookies['username'], function(results){
         res.render('student/timeLine', {postList : results});
-        // console.log(results.postId);
-        // console.log(results.username);
     });
 });
 
-//Edit Profile Picture
 
+//Edit Profile Picture
 router.post('/profilePicture', upload.single('image'), function(req, res, next){
     var user = {
         profilePicture : req.file.filename,
@@ -150,6 +140,51 @@ router.get('/chat', function(req, res){
 router.get('/settings', function(req, res){
     userModel.getByUname(req.cookies['username'], function(result){
         res.render('student/settings',{user : result});
+    });
+
+});
+
+
+//Like and Notofication
+router.post("/likeExe", function(req, res){
+    console.log(req.body.id);
+    var user = {
+        like : req.body.like,
+        postId : req.body.postId
+
+    };
+    console.log(user);
+
+    userModel.updateLike(user, function(status){ 
+        if(status){
+            
+            var notifiInfo = {
+                sender : req.cookies.username,
+                receiver: req.body.username
+            }
+            var data = "notifiInfo "+req.cookies.username+" "+req.body.username;
+            console.log(data);
+
+            userModel.notification(notifiInfo, function(staus2){
+                console.log("Notification Send!");
+                res.send(true);
+            });
+            
+
+            //console.log(new Date());
+
+            
+        }
+    });
+});
+
+router.post('/notifiClear', function(req, res){
+    console.log("On student.js ");
+    var info = {
+        username: req.body.uname
+    }
+    userModel.updateNotifi(info, function(status){
+        res.send(true);
     });
 
 });

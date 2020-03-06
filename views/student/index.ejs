@@ -22,6 +22,8 @@
 
     <link rel="stylesheet" href="/css/style.css">
 
+    <script type="text/javascript" src="/script/student.js"></script>
+
     <title>Student Home</title>
 
     <style>
@@ -75,9 +77,26 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="#"><!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;-->
+                        <% if(notifiInfo != null) {%>
+                        <div id="username" hidden><%=notifiInfo[0].receiver%></div>
+                        <%}%>
+                        <button type="button" id="notification" onclick="showNotifi()"   class="btn btn-light">
+                            Notification <span id="notifiNum" class="badge badge-primary">
+
+                                <% if(notifiInfo != null) {%>
+                                    <%= notifiInfo.length %>
+                                <%}%>
+                                
+                                    
+
+                                </span>
+                        </button>
+
+                        <!--
                         <button type="button" class="btn btn-light">
                             Notification <span class="badge badge-primary">15</span>
                         </button>
+                    -->
                     </a>
                 </li>
 
@@ -137,7 +156,8 @@
                             <tr>
                                 <td width="2%"><img src="/<%= data[i].profilePicture%>" class="rounded-circle" height="40px" width="40px"></td>
                                 <td>
-                                    <text class="name"> <%= data[i].name %> </text>
+                                    <div id="username<%=i%>" hidden><%= data[i].username %></div>
+                                    <text    class="name"> <%= data[i].name %> </text>
                                     <span class="badge badge-pill badge-secondary"><%= data[i].type%></span>
                                 </td>
                             </tr>
@@ -177,9 +197,16 @@
                                 <td width="2%"></td>
                                 <td>
                                     <center>
-                                        <button class="btn btn-light">
+                                        <!--
+                                        <button  class="btn btn-light">
                                             Like <span class="badge badge-primary"><%=data[i].postLike %></span>
                                         </button>
+                                    -->
+
+                                    <button type="button" id="likebtn<%=i%>" onclick="like(<%= data[i].postId %>, <%= i %>)" class="btn btn-light" >
+                                        Like <span id="likeCount<%=i%>" class="badge badge-primary"><%= data[i].postLike %></span>
+                                    </button>
+
                                     </center>
                                 </td>
                                 <td>

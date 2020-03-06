@@ -238,5 +238,58 @@ module.exports= {
 				callback([]);
 			}
 		});
+	},
+
+	//like implementation
+	updateLike : function(user, callback){
+		var sql = "update post set postLike=? where postId=?";
+		db.execute(sql, [user.like, user.postId], function(status){
+			console.log("Update like on post table");
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
+
+	notification: function(info, callback){
+		var data = info.sender + " " + info.receiver + "sdkfhksd";
+		console.log(data);
+		var sql = "insert into notification values(?,?,?,?,?)";
+		db.execute(sql, [null, info.sender, "like", info.receiver, "false"], function(status){
+			console.log("Insert on notification table");
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
+
+	notificationInfo: function(username, callback){
+		var sql = "select * from notification where receiver = ? and seen=?";
+		db.getResults(sql, [username, "false"], function(results){
+			if(results.length > 0){
+				callback(results);
+			}
+			else{
+				callback(null);
+			}
+		});
+	},
+
+	updateNotifi: function(info, callback){
+		console.log("N update called");
+		var sql = "UPDATE notification SET seen=? WHERE seen=? and receiver = ?";
+		db.execute(sql, ["true", "false", info.username], function(status){
+			if(status){
+				console.log("notifi update");
+				callback(true);
+			}else{
+				console.log("notifi update fail");
+				callback(false);
+			}
+		});
 	}
 }
