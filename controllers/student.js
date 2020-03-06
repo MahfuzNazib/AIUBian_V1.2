@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var userModel = require.main.require('./models/user-model');
-var multer = require('multer'); //File upload
-var fs = require('fs');
-var date = require('date-and-time');
+var express     = require('express');
+var router      = express.Router();
+var userModel   = require.main.require('./models/user-model');
+var multer      = require('multer'); 
+var fs          = require('fs');
+var date        = require('date-and-time');
 
 var storage = multer.diskStorage({
 	destination: (req, file, cb) => {
@@ -16,30 +16,6 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage });
 
-
-// var storage = multer.diskStorage({
-// 	destination: function(req, file, callback){
-// 		var dir = "./uploads";
-
-// 		if(!fs.existsSync(dir)){
-// 			fs.mkdirSync(dir);
-// 		}
-
-// 		callback(null, dir);
-		
-// 	},
-
-// 	filename: function(req, file, callback){
-        
-//         callback(null, file.originalname);
-//         console.log(file.originalname);
-//         //document.getElementById('imgName').innerHTML = file.originalname;
-// 	}
-// });
-
-// var upload = multer({storage: storage}).array("image", 12);
-
-
 router.get('*', function(req, res, next){
 	if(req.cookies['username'] == null){
 		res.redirect('/login');
@@ -49,8 +25,11 @@ router.get('*', function(req, res, next){
 });
 
 router.get('/', function(req, res){
-    userModel.getByUname(req.cookies['username'], function(result){ 
-        res.render('student/index', {user : result});
+    // userModel.getByUname(req.cookies['username'], function(result){ 
+    //     res.render('student/index', {user : result});
+    // });
+    userModel.getAllPost(req.cookies['username'], function(result){ 
+        res.render('student/index', {postList : result});
     });
 });
 
@@ -90,7 +69,6 @@ router.post('/editProfile', function(req, res){
 
     userModel.updateStudent(data, function(status){
         if(status){
-            //res.send('Profile Successfully Updated');
             res.redirect('/studentHome/studentProfile');
         }
         else{
@@ -101,81 +79,38 @@ router.post('/editProfile', function(req, res){
 });
 
 router.get('/timeLine', function(req, res){
-    userModel.getByUname(req.cookies['username'], function(result){
-        res.render('student/timeLine',{user : result});
+    // userModel.getByUname(req.cookies['username'], function(result){
+    //     res.render('student/timeLine',{user : result});
+    // });
+    userModel.getMyPost(req.cookies['username'], function(results){
+        res.render('student/timeLine', {postList : results});
+        // console.log(results.postId);
+        // console.log(results.username);
     });
 });
 
-
-// router.post("/timeLine", function(req, res, next){
-// 	upload(req, res, function(err){
-// 		if(err){
-// 			return res.send("Something gone wrong");
-// 		}
-// 		res.send("Upload complete");
-// 	})
-// });
-
-// router.post('/timeLine', function(req, res, next){
-//     upload(req, res, function(err){
-//         if(err){
-//             res.send('Something wrong');
-//         }
-//         else{
-//             var datetime = new Date();
-//             // var image = req.body.image;
-//             var image = req.body.image;
-//             var createPost = {
-//                 postDate : datetime.toISOString().slice(0,10),
-//                 text : req.body.text,
-//                 images : image,
-//                 video : 'null',
-//                 username : 'tanvir',
-//                 type : 'Student',
-//                 email : 'tanvir@gmail.com',
-//                 postLike : 0
-//             };
-
-//             userModel.insertPost(createPost, function(status){
-//                 if(status){
-//                     res.redirect('/studentHome/timeLine');
-//                 }
-//                 else{
-//                     res.send('Posting Failed');
-//                 }
-//             });
-//         }
-//     });
-// });
-
-
 router.post('/timeLine', upload.single('image'), function(req, res, next){
-    
-            var datetime = new Date();
-            // var image = req.body.image;
-            var image = req.file.filename;
-            var createPost = {
-                postDate : datetime.toISOString().slice(0,10),
-                text : req.body.text,
-                images : image,
-                video : 'null',
-                username : 'tanvir',
-                type : 'Student',
-                email : 'tanvir@gmail.com',
-                postLike : 0
-            };
 
-            userModel.insertPost(createPost, function(status){
-                if(status){
-                    res.redirect('/studentHome/timeLine');
-                }
-                else{
-                    res.send('Posting Failed');
-                }
-            });
-    });
-//});
-
+        var datetime    = new Date();
+        var image       = req.file.filename;
+        var createPost  = {
+            postDate    : datetime.toISOString().slice(0,10),
+            text        : req.body.text,
+            images      : image,
+            video       : 'null',
+            username    : req.cookies['username'],
+            postLike    : 0
+        };
+        console.log(createPost.username);
+        userModel.insertPost(createPost, function(status){
+            if(status){
+                res.redirect('/studentHome/timeLine');
+            }
+            else{
+                res.send('Posting Failed');
+            }
+        });
+});
 
 
 router.get('/chat', function(req, res){

@@ -113,11 +113,9 @@ module.exports= {
 	},
 
 	getByUname: function(username, callback){
-		//var sql = "SELECT * FROM login WHERE username = ?";.
-		//var sql = "SELECT * FROM userinfo, login WHERE login.username = ?";
 		var sql = "SELECT * from userinfo where email = (SELECT email from login where username = ?)";
 		db.getResults(sql, [username], function(results){
-			console.log(results);
+			//console.log(results);
 			if(results.length > 0){
 				callback(results[0]);
 			}else{
@@ -140,8 +138,8 @@ module.exports= {
 
 	//Inset Into UserInfo Table
 	insertUserInfo: function(user, callback){
-		var sql = "INSERT INTO userinfo VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		db.execute(sql, [null, user.name, user.email, user.aiubId, null, null, null, user.department, null, null, null, null, null, null, null, null, null, null, null, null, null, null], function(status){
+		var sql = "INSERT INTO userinfo VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		db.execute(sql, [null, user.name, user.email, user.aiubId, null, null, null, user.department, null, null, null, null, null, null, null, null, null, null, null, null, null, null, user.username, user.type, null],  function(status){
 			if(status){
 				callback(true);
 			}else{
@@ -178,14 +176,40 @@ module.exports= {
 
 	insertPost : function(createPost, callback){
 		console.log(createPost);
-		var sql = "INSERT INTO post VALUES(?,?,?,?,?,?,?,?,?)";
-		db.execute(sql, [null, createPost.postDate, createPost.email, createPost.type, createPost.text, createPost.images, createPost.video, createPost.postLike, createPost.username], function(status){
+		var sql = "INSERT INTO post VALUES(?,?,?,?,?,?,?)";
+		db.execute(sql, [null, createPost.postDate,createPost.text, createPost.images, createPost.video, createPost.postLike, createPost.username], function(status){
 			if(status){
 				
 				callback(true);
 			}
 			else{
 				callback(false);
+			}
+		});
+	},
+
+	getMyPost : function(username, callback){
+		var sql =  "SELECT * FROM post WHERE username = ? ORDER BY postId DESC";
+		db.getResults(sql, [username], function(results){
+			//console.log(results);
+			if(results.length > 0){
+				callback(results);
+			}
+			else{
+				callback([]);
+			}
+		});
+	},
+
+	getAllPost : function(username, callback){
+		var sql =  "SELECT * from post where username != ? ORDER BY postId DESC";
+		db.getResults(sql, [username], function(results){
+			//console.log(results);
+			if(results.length > 0){
+				callback(results);
+			}
+			else{
+				callback([]);
 			}
 		});
 	}

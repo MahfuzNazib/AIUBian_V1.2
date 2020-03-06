@@ -18,7 +18,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <!--Google Fonts Link-->
-    <link href="https://fonts.googleapis.com/css?family=Cuprum|El+Messiri|Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/css/style.css">
 
@@ -40,7 +40,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a class="navbar-brand" href="#">  <%= user.name %> </a>
+            <a class="navbar-brand" href="#">  <%= postList.username %> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -49,7 +49,7 @@
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="/studentHome">
                     <button class="btn btn-light">
                         Home
                     </button>
@@ -129,156 +129,75 @@
 
             <!--Middle Sides////Posts-->
             <div class="col-sm-6 container ">
-                <div class="container bg card">
-                    <br>
-                    <table border="0">
-                        <!--Name,Status Row-->
-                        <tr>
-                            <td width="2%"><img src="/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
-                            <td>
-                                <text class="name">Nazib Mahfuz</text>
-                                <span class="badge badge-pill badge-secondary">Student</span>
-                            </td>
-                        </tr>
+                <% for(var i=0; i < postList.length; i++){ %>
+                    <div class="container bg card">
+                        <br>
+                        <table border="0">
+                            <!--Name,Status Row-->
+                            <tr>
+                                <td width="2%"><img src="/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
+                                <td>
+                                    <text class="name"> <%= postList[i].username %> </text>
+                                    <span class="badge badge-pill badge-secondary">Student</span>
+                                </td>
+                            </tr>
 
-                        <!--Date Time Row-->
-                        <tr>
-                            <td></td>
-                            <td>25-02-2020, <i>06:21:36 PM</i></td>
-                        </tr>
+                            <!--Date Time Row-->
+                            <tr>
+                                <td></td>
+                                <td> <%= postList[i].postDate %> </td>
+                            </tr>
 
-                        <!--Image/Video/Text Row-->
-                        <tr>
-                            <td></td>
-                            <td>
-                                <img src="/1easuM.jpg" height="300px" width="90%">
-                            </td>
-                        </tr>
-                    </table>
-                    <table border="0">
-                        <tr>
-                            <td width="2%"></td>
-                            <td>
-                                <center>
-                                    <button class="btn btn-light">
-                                        Like <span class="badge badge-primary">15</span>
-                                    </button>
-                                </center>
-                            </td>
-                            <td>
-                                <center>
-                                    <button class="btn btn-light">
-                                        Comments <span class="badge badge-primary">15</span>
-                                    </button>
-                                </center>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-                    <br>
-                </div>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <hr>
+                                </td>
+                            </tr>
 
-                <br><br>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <p class="postTextDisplay">
+                                        <%= postList[i].text %>
+                                    </p>
+                                </td>
+                            </tr>
 
-                <div class="container bg card">
-                    <br>
-                    <table border="0">
-                        <!--Name,Status Row-->
-                        <tr>
-                            <td width="2%"><img src="/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
-                            <td>
-                                <text class="name">Nazib Mahfuz</text>
-                                <span class="badge badge-pill badge-secondary">Student</span>
-                            </td>
-                        </tr>
-
-                        <!--Date Time Row-->
-                        <tr>
-                            <td></td>
-                            <td>25-02-2020, <i>06:21:36 PM</i></td>
-                        </tr>
-
-                        <!--Image/Video/Text Row-->
-                        <tr>
-                            <td></td>
-                            <td>
-                                <img src="/1easuM.jpg" height="300px" width="90%">
-                            </td>
-                        </tr>
-                    </table>
-                    <table border="0">
-                        <tr>
-                            <td width="2%"></td>
-                            <td>
-                                <center>
-                                    <button class="btn btn-light">
-                                        Like <span class="badge badge-primary">15</span>
-                                    </button>
-                                </center>
-                            </td>
-                            <td>
-                                <center>
-                                    <button class="btn btn-light">
-                                        Comments <span class="badge badge-primary">15</span>
-                                    </button>
-                                </center>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-                    <br>
-                </div>
+                            <!--Image/Video/Text Row-->
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <img src="/<%= postList[i].image %>" height="300px" width="90%">
+                                </td>
+                            </tr>
+                        </table>
+                        <table border="0">
+                            <tr>
+                                <td width="2%"></td>
+                                <td>
+                                    <center>
+                                        <button class="btn btn-light">
+                                            Like <span class="badge badge-primary"><%=postList[i].postLike %></span>
+                                        </button>
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        <button class="btn btn-light">
+                                            Comments <span class="badge badge-primary">15</span>
+                                        </button>
+                                    </center>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <br>
+                    </div>
+                    <br><br>
+                <% } %>
 
                 <br><br>
-
-                <div class="container bg card">
-                    <br>
-                    <table border="0">
-                        <!--Name,Status Row-->
-                        <tr>
-                            <td width="2%"><img src="/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
-                            <td>
-                                <text class="name">Nazib Mahfuz</text>
-                                <span class="badge badge-pill badge-secondary">Student</span>
-                            </td>
-                        </tr>
-
-                        <!--Date Time Row-->
-                        <tr>
-                            <td></td>
-                            <td>25-02-2020, <i>06:21:36 PM</i></td>
-                        </tr>
-
-                        <!--Image/Video/Text Row-->
-                        <tr>
-                            <td></td>
-                            <td>
-                                <img src="/1easuM.jpg" height="300px" width="90%">
-                            </td>
-                        </tr>
-                    </table>
-                    <table border="0">
-                        <tr>
-                            <td width="2%"></td>
-                            <td>
-                                <center>
-                                    <button class="btn btn-light">
-                                        Like <span class="badge badge-primary">15</span>
-                                    </button>
-                                </center>
-                            </td>
-                            <td>
-                                <center>
-                                    <button class="btn btn-light">
-                                        Comments <span class="badge badge-primary">15</span>
-                                    </button>
-                                </center>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </table>
-                    <br>
-                </div>
             </div>
 
             <div class="col-sm-3 container">

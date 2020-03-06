@@ -138,3 +138,9 @@ Check Box Design
     color: rgb(0, 0, 0);
     text-align: center;
 }
+
+
+.postTextDisplay {
+    font-family: 'PT Serif', serif;
+    font-size: medium;
+}

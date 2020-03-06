@@ -15,6 +15,7 @@ router.post('/', function(req, res){
         email : req.body.mail,
         username : req.body.username,
         password : req.body.password
+        
     }
 
     userModel.checkEmail(req.body.mail, function(results){
