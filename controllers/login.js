@@ -39,7 +39,7 @@ router.post('/', function(req, res){
 
         //Admin
         else if(status.type == "Admin"){
-            
+            res.cookie('username', req.body.username);
             res.redirect('/adminhome');
         }
 

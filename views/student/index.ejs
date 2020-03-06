@@ -156,12 +156,15 @@
                             <tr>
                                 <td width="2%"><img src="/<%= data[i].profilePicture%>" class="rounded-circle" height="40px" width="40px"></td>
                                 <td>
+                                    <div hidden><%= data[i].UserId%></div>
                                     <div id="username<%=i%>" hidden><%= data[i].username %></div>
-                                    <text    class="name"> <%= data[i].name %> </text>
+                                    <text    class="name">
+                                         <!-- <%= data[i].name %>  -->
+                                         <a href="/studentHome/viewProfile/<%= data[i].UserId %>"> <%= data[i].name %> </a>
+                                    </text>
                                     <span class="badge badge-pill badge-secondary"><%= data[i].type%></span>
                                 </td>
                             </tr>
-
                             <!--Date Time Row-->
                             <tr>
                                 <td></td>

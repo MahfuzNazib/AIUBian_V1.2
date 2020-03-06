@@ -240,6 +240,21 @@ module.exports= {
 		});
 	},
 
+
+	viewUser : function(UserId, callback){
+		//var sql = "SELECT * FROM userinfo INNER JOIN post ON userinfo.username = post.username where userinfo.UserId = ? ORDER BY post.postId DESC ";
+		var sql = "SELECT * FROM userinfo WHERE UserId = ?";
+		db.getResults(sql, [UserId], function(results){
+			if(results.length > 0){
+				console.log(results);
+				callback(results);
+			}
+			else{
+				callback([]);
+			}
+		});
+	},
+
 	//like implementation
 	updateLike : function(user, callback){
 		var sql = "update post set postLike=? where postId=?";

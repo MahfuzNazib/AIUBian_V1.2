@@ -82,8 +82,10 @@ router.post('/editProfile', function(req, res){
 });
 
 router.get('/timeLine', function(req, res){
-    userModel.getMyPost(req.cookies['username'], function(results){
-        res.render('student/timeLine', {postList : results});
+    userModel.getByUname(req.cookies['username'], function(userInfo){
+        userModel.getMyPost(req.cookies['username'], function(results){
+            res.render('student/timeLine', {postList : results, userInfo : userInfo});
+        });
     });
 });
 
@@ -189,5 +191,15 @@ router.post('/notifiClear', function(req, res){
 
 });
 
+
+
+//View Profie
+
+router.get('/viewProfile/:UserId', function(req, res){
+    userModel.viewUser(req.params.UserId, function(results){
+        //console.log(results);
+        res.render('viewProfile/profileOfStudent', {data : results});
+    });
+});
 
 module.exports = router;
