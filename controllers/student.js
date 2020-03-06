@@ -25,11 +25,16 @@ router.get('*', function(req, res, next){
 });
 
 router.get('/', function(req, res){
-    // userModel.getByUname(req.cookies['username'], function(result){ 
-    //     res.render('student/index', {user : result});
+    // userModel.getByUname(req.cookies['username'], function(userInfo){ 
+    //     userModel.getAllPost(req.cookies['username'], function(postInfo){ 
+    //         res.render('student/index', {postList : postInfo, userInfo : userInfo});
+    //     });
     // });
-    userModel.getAllPost(req.cookies['username'], function(result){ 
-        res.render('student/index', {postList : result});
+
+    userModel.getAllData(function(result){
+        userModel.getByUname(req.cookies['username'], function(userInfo){
+            res.render('student/index', {data : result, userInfo : userInfo});
+        });
     });
 });
 
@@ -46,6 +51,9 @@ router.get('/editProfile', function(req, res){
         res.render('student/editProfile',{user : result});
     });
 });
+
+
+
 
 //Post Method for Update Profile Data in editProfile Page
 
@@ -88,6 +96,26 @@ router.get('/timeLine', function(req, res){
         // console.log(results.username);
     });
 });
+
+//Edit Profile Picture
+
+router.post('/profilePicture', upload.single('image'), function(req, res, next){
+    var user = {
+        profilePicture : req.file.filename,
+        username : req.cookies['username']
+    }
+    userModel.updateProfilePicture(user, function(status){
+        if(status){
+
+            res.redirect('/studentHome/editProfile');
+        }
+        else{
+            res.send('Profile picture uploded Failed');
+        }
+    });
+
+});
+
 
 router.post('/timeLine', upload.single('image'), function(req, res, next){
 

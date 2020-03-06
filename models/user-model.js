@@ -161,6 +161,19 @@ module.exports= {
 			}
 		});
 	},
+
+	updateProfilePicture : function(user, callback){
+		var sql = "UPDATE userinfo SET profilePicture = ? WHERE username = ? ";
+		db.execute(sql, [user.profilePicture, user.username], function(status){
+			if(status){
+				callback(true);
+			}
+			else{
+				callback(false);
+			}
+		});
+	},
+
 	delete: function(user, callback){
 		var sql = "delete from user where id=?";
 		db.execute(sql, [user.id], function(status){
@@ -204,6 +217,19 @@ module.exports= {
 	getAllPost : function(username, callback){
 		var sql =  "SELECT * from post where username != ? ORDER BY postId DESC";
 		db.getResults(sql, [username], function(results){
+			//console.log(results);
+			if(results.length > 0){
+				callback(results);
+			}
+			else{
+				callback([]);
+			}
+		});
+	},
+
+	getAllData : function(callback){
+		var sql =  "SELECT * FROM userinfo INNER JOIN post ON userinfo.username = post.username ORDER BY post.postId DESC";
+		db.getResults(sql, null, function(results){
 			//console.log(results);
 			if(results.length > 0){
 				callback(results);

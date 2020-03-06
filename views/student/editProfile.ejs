@@ -109,7 +109,7 @@
                 <center>
                     <div class="container">
                         <!-- <img src="/images/n2.JPG" class="rounded-circle" height="200px" width="30%"> -->
-                        <img src="/FB_Profile.jpg" class="rounded-circle" height="200px" width="30%">
+                        <img src="/<%= user.profilePicture %>" class="rounded-circle" height="200px" width="30%">
                     </div>
                 </center>
                 <br>
@@ -121,8 +121,8 @@
                 <center>
                 
                     <br>  
-                    <form method="POST" action="/upload" enctype="multipart/form-data">
-                        <input type="file" name="files" multiple>
+                    <form method="POST" action="/studentHome/profilePicture" enctype="multipart/form-data">
+                        <input type="file" name="image" multiple>
                         <button type="submit" class="btn btn-success">Upload Profile Picture</button>
                     </form>
                 </center>

@@ -40,7 +40,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a class="navbar-brand" href="#">  <%= postList.username %> </a>
+            <a class="navbar-brand" href="#">  <%= userInfo.name %> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -109,7 +109,7 @@
                 <br>
                 <!--Profile information-->
                 <center>
-                    <img src="/1easuM.jpg" class="rounded-circle" width="70px" height="70px"><br>
+                    <img src="/<%= userInfo.profilePicture%>" class="rounded-circle" width="70px" height="70px"><br>
                 </center>
                 <hr>
                 <center>
@@ -129,23 +129,23 @@
 
             <!--Middle Sides////Posts-->
             <div class="col-sm-6 container ">
-                <% for(var i=0; i < postList.length; i++){ %>
+                <% for(var i=0; i < data.length; i++){ %>
                     <div class="container bg card">
                         <br>
                         <table border="0">
                             <!--Name,Status Row-->
                             <tr>
-                                <td width="2%"><img src="/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
+                                <td width="2%"><img src="/<%= data[i].profilePicture%>" class="rounded-circle" height="40px" width="40px"></td>
                                 <td>
-                                    <text class="name"> <%= postList[i].username %> </text>
-                                    <span class="badge badge-pill badge-secondary">Student</span>
+                                    <text class="name"> <%= data[i].name %> </text>
+                                    <span class="badge badge-pill badge-secondary"><%= data[i].type%></span>
                                 </td>
                             </tr>
 
                             <!--Date Time Row-->
                             <tr>
                                 <td></td>
-                                <td> <%= postList[i].postDate %> </td>
+                                <td> <%= data[i].postDate %> </td>
                             </tr>
 
                             <tr>
@@ -159,7 +159,7 @@
                                 <td></td>
                                 <td>
                                     <p class="postTextDisplay">
-                                        <%= postList[i].text %>
+                                        <%= data[i].text %>
                                     </p>
                                 </td>
                             </tr>
@@ -168,7 +168,7 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <img src="/<%= postList[i].image %>" height="300px" width="90%">
+                                    <img src="/<%= data[i].image %>" height="300px" width="90%">
                                 </td>
                             </tr>
                         </table>
@@ -178,7 +178,7 @@
                                 <td>
                                     <center>
                                         <button class="btn btn-light">
-                                            Like <span class="badge badge-primary"><%=postList[i].postLike %></span>
+                                            Like <span class="badge badge-primary"><%=data[i].postLike %></span>
                                         </button>
                                     </center>
                                 </td>
