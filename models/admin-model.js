@@ -32,5 +32,50 @@ module.exports = {
 				callback([]);
 			}
 		});
+	},
+
+	getStudentPost : function(callback){
+		var sql = "SELECT * FROM post WHERE type1 = 'Student' ORDER BY postId DESC";
+		db.getResults(sql, null, function(results){
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback([]);
+			}
+		});
+	},
+
+	getAlumniPost : function(callback){
+		var sql = "SELECT * FROM post WHERE type1 = 'Alumni' ORDER BY postId DESC";
+		db.getResults(sql, null, function(results){
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback([]);
+			}
+		});
+	},
+
+	getFacultyPost : function(callback){
+		var sql = "SELECT * FROM post WHERE type1 = 'Faculty' ORDER BY postId DESC";
+		db.getResults(sql, null, function(results){
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback([]);
+			}
+		});
+	},
+
+	deletePost : function(postId, callback){
+		var sql = "DELETE FROM post WHERE postId = ?";
+		db.execute(sql, [postId], function(status){
+			if(status){
+				callback(true);
+			}
+			else{
+				callback(false);
+			}
+		});
 	}
 }

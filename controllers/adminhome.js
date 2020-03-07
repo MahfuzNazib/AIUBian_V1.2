@@ -13,12 +13,15 @@ router.get('/', function(req, res){
     });
 });
 
+//Get Request for All POst
 router.get('/allPosts', function(req, res){
     adminModel.getAllPost(function(results){
         res.render('adminhome/posts', {postList : results});
     });
     
 });
+
+router.post('/allPosts');
 
 //Chat Page Request
 router.get('/chat', function(req, res){
@@ -37,18 +40,25 @@ router.get('/editProfile', function(req, res){
 
 //Faculty Post Request
 router.get('/facultyPost', function(req, res){
-    res.render('adminhome/facultyPost');
+    adminModel.getFacultyPost(function(results){
+        res.render('adminhome/facultyPost',{postList : results});
+    });
 });
 
 //Alumni Post List Request
 
 router.get('/alumniPost', function(req, res){
-    res.render('adminhome/alumniPOst');
+    adminModel.getAlumniPost(function(results){
+        res.render('adminhome/alumniPOst', {postList : results});
+    });
 });
 
 //Student post List Request
 router.get('/studentPost', function(req, res){
-    res.render('adminhome/studentPost');
+    adminModel.getStudentPost(function(results){
+        res.render('adminhome/studentPost',{postList : results});
+    });
+    
 });
 
 //All Member List Request

@@ -189,8 +189,8 @@ module.exports= {
 
 	insertPost : function(createPost, callback){
 		console.log(createPost);
-		var sql = "INSERT INTO post VALUES(?,?,?,?,?,?,?)";
-		db.execute(sql, [null, createPost.postDate,createPost.text, createPost.images, createPost.video, createPost.postLike, createPost.username], function(status){
+		var sql = "INSERT INTO post VALUES(?,?,?,?,?,?,?,?,?)";
+		db.execute(sql, [null, createPost.postDate,createPost.text, createPost.images, createPost.video, createPost.postLike, createPost.username, createPost.type, createPost.name], function(status){
 			if(status){
 				
 				callback(true);
@@ -320,5 +320,18 @@ module.exports= {
 				callback(false);
 			}
 		});
+	},
+
+	getNameAndType : function(username, callback){
+		var sql = "SELECT name, type FROM userinfo WHERE username = ?";
+		db.getResults(sql,[username], function(results){
+			if(results.length > 0){
+				callback(results[0]);
+			}
+			else{
+				callback(null);
+			}
+		});
+
 	}
 }

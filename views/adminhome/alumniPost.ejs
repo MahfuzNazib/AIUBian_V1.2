@@ -86,7 +86,45 @@
             <h2>Alumni Posts List</h2>
           </center>
             <hr>
+
             <table border="0" width="100%">
+                <tr class="table-header">
+                    <td>Post ID</td>
+                    <td>Post Date</td>
+                    <td>Name</td>
+                    <td>UserName</td>
+                    <td>Details</td>
+                    <td>Image</td>
+                    <!-- <td>Videos</!-->
+                    <td>Type</td>
+                    <td>Actions</td>
+                </tr>
+
+                <% for(var i=0; i < postList.length; i++){%>
+                <tr class="postDetails">
+                    <td> <%= postList[i].postId%></td>
+                    <td> <%= postList[i].postDate%></td>
+                    <td> <%= postList[i].name1%></td>
+                    <td> <%= postList[i].username%></td>
+                    <td width="200px"> <%= postList[i].text%></td>
+                    <td> <img src="/<%= postList[i].image%>" height="100px" width="100px"></td>
+                    <!-- <td> 
+                        <video width="100px" height="100px" controls>
+                            <source src="/videos/video.mp4" type="video/mp4">
+                        </video>
+                    </td> -->
+                    <td><span class="badge badge-primary"> <%= postList[i].type1%> </span></td>
+                    <td><button class="btn btn-danger">Delete</button></td>
+    
+                </tr>
+                <tr>
+                    <td colspan="8"><hr></td>
+                </tr> 
+                <% } %>
+                  
+            </table>
+            
+            <!-- <table border="0" width="100%">
                 <tr class="table-header">
                     <td>Post ID</td>
                     <td>Post Date</td>
@@ -149,6 +187,6 @@
                 <tr>
                     <td colspan="7"><hr></td>
                 </tr>             
-            </table>
+            </table> -->
 </body>
 </html>

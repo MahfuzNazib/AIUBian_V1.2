@@ -110,7 +110,8 @@ router.post('/profilePicture', upload.single('image'), function(req, res, next){
 
 
 router.post('/timeLine', upload.single('image'), function(req, res, next){
-
+    
+    userModel.getNameAndType(req.cookies['username'], function(result){
         var datetime    = new Date();
         var image       = req.file.filename;
         var createPost  = {
@@ -119,7 +120,9 @@ router.post('/timeLine', upload.single('image'), function(req, res, next){
             images      : image,
             video       : 'null',
             username    : req.cookies['username'],
-            postLike    : 0
+            postLike    : 0,
+            name        : result.name,
+            type        : result.type
         };
         console.log(createPost.username);
         userModel.insertPost(createPost, function(status){
@@ -130,6 +133,26 @@ router.post('/timeLine', upload.single('image'), function(req, res, next){
                 res.send('Posting Failed');
             }
         });
+    });
+        // var datetime    = new Date();
+        // var image       = req.file.filename;
+        // var createPost  = {
+        //     postDate    : datetime.toISOString().slice(0,10),
+        //     text        : req.body.text,
+        //     images      : image,
+        //     video       : 'null',
+        //     username    : req.cookies['username'],
+        //     postLike    : 0
+        // };
+        // console.log(createPost.username);
+        // userModel.insertPost(createPost, function(status){
+        //     if(status){
+        //         res.redirect('/studentHome/timeLine');
+        //     }
+        //     else{
+        //         res.send('Posting Failed');
+        //     }
+        // });
 });
 
 
