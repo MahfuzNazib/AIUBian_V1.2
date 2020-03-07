@@ -6,12 +6,18 @@ var adminModel   = require.main.require('./models/admin-model');
 router.get('/', function(req, res){
     adminModel.getTotalPost(function(results){
         console.log(results);
-        res.render('adminhome/index', {data : results});
+        adminModel.getTotalMember(function(totalMember){
+            console.log(totalMember);
+            res.render('adminhome/index', {data : results, totalMember : totalMember});
+        });
     });
 });
 
 router.get('/allPosts', function(req, res){
-    res.render('adminhome/posts');
+    adminModel.getAllPost(function(results){
+        res.render('adminhome/posts', {postList : results});
+    });
+    
 });
 
 //Chat Page Request

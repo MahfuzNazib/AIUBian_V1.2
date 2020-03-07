@@ -147,6 +147,8 @@ router.get('/settings', function(req, res){
 });
 
 
+
+
 //Like and Notofication
 router.post("/likeExe", function(req, res){
     console.log(req.body.id);
@@ -200,7 +202,6 @@ router.get('/viewProfile/:UserId', function(req, res){
         console.log(userInfo.type);
         if(userInfo.type == "Student"){
             userModel.showUserPosts(req.params.UserId, function(postList){
-                //console.log(postList);
                 res.render('viewProfile/profileOfStudent', {data : userInfo, postList : postList});
             });
         }
@@ -211,7 +212,6 @@ router.get('/viewProfile/:UserId', function(req, res){
         else{
             //res.render('viewProfile/profileOfAlumni', {data : results});
         }
-        //res.render('viewProfile/profileOfStudent', {data : results});
     });
 });
 
