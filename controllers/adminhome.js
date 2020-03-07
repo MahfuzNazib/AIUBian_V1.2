@@ -21,7 +21,22 @@ router.get('/allPosts', function(req, res){
     
 });
 
-router.post('/allPosts');
+
+router.get('/allPosts/:postId', function(req, res){
+    adminModel.deletePost(req.params.postId, function(status){
+        if(status){
+            res.redirect('/adminhome/allPosts');
+        }
+        else{
+            res.send('This post is not Deleted Yet. Try Again!!');
+        }
+    });
+    // res.send(req.params.postId);
+});
+// router.post('/allPosts', function(req, res){
+    
+//     res.send('Post Method Called');
+// });
 
 //Chat Page Request
 router.get('/chat', function(req, res){
@@ -63,22 +78,30 @@ router.get('/studentPost', function(req, res){
 
 //All Member List Request
 router.get('/allMemberList', function(req, res){
-    res.render('adminhome/allMemberList');
+    adminModel.getAllMember( function (results){
+        res.render('adminhome/allMemberList', {userList : results});
+    });
 });
 
 //Faculty Member List Request
 router.get('/facultyMemberList', function(req, res){
-    res.render('adminhome/facultyMemberList');
+    adminModel.getAllFacultyList(function(results){
+        res.render('adminhome/facultyMemberList' ,{userList : results});
+    });
 });
 
 //Alumni Member List Request
 router.get('/alumniMemberList', function(req, res){
-    res.render('adminhome/alumniMemberList');
+    adminModel.getAllAlumniList(function(results){
+        res.render('adminhome/alumniMemberList', {userList : results});
+    });
 });
 
 //Student Member List Request
 router.get('/studentMemberList', function(req, res){
-    res.render('adminhome/studentMemberList');
+    adminModel.getAllStudentList(function(results){
+        res.render('adminhome/studentMemberList' ,{userList : results});
+    });
 });
 
 //Admin TimeLine Request

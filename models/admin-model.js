@@ -77,5 +77,49 @@ module.exports = {
 				callback(false);
 			}
 		});
+	},
+
+	getAllMember : function(callback){
+		var sql = "SELECT UserId, profilePicture, name, aiub_id, phone, email, type FROM userinfo";
+		db.getResults(sql, null, function(results){
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback([]);
+			}
+		});
+	},
+
+	getAllStudentList : function(callback){
+		var sql = "SELECT  UserId, profilePicture, name, aiub_id, phone, email FROM userinfo where type = 'Student'";
+		db.getResults(sql, null, function(results){
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback([]);
+			}
+		});
+	},
+
+	getAllFacultyList : function(callback){
+		var sql = "SELECT  UserId, profilePicture, name, aiub_id, phone, email FROM userinfo where type = 'Faculty'";
+		db.getResults(sql, null, function(results){
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback([]);
+			}
+		});
+	},
+
+	getAllAlumniList : function(callback){
+		var sql = "SELECT  UserId, profilePicture, name, aiub_id, phone, email FROM userinfo where type = 'Alumni'";
+		db.getResults(sql, null, function(results){
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback([]);
+			}
+		});
 	}
 }

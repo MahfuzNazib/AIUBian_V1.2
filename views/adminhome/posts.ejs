@@ -87,22 +87,27 @@
           </center>
             <hr>
 
+        <!-- <form method="POST"> -->
             <table border="0" width="100%">
                 <tr class="table-header">
                     <td>Post ID</td>
                     <td>Post Date</td>
-                    <td>Name</td>
+                    <td width="100px">Name</td>
                     <td>UserName</td>
                     <td>Details</td>
                     <td>Image</td>
                     <!-- <td>Videos</!-->
-                    <td>Type</td>
+                    <td width="50px">Type</td>
                     <td>Actions</td>
                 </tr>
 
                 <% for(var i=0; i < postList.length; i++){%>
                 <tr class="postDetails">
-                    <td> <%= postList[i].postId%></td>
+                    <td> 
+                        <!-- <div name="postId"> -->
+                            <%= postList[i].postId%>
+                        <!-- </div> -->
+                    </td>
                     <td> <%= postList[i].postDate%></td>
                     <td> <%= postList[i].name1%></td>
                     <td> <%= postList[i].username%></td>
@@ -114,14 +119,18 @@
                         </video>
                     </td> -->
                     <td><span class="badge badge-primary"> <%= postList[i].type1%> </span></td>
-                    <td><button class="btn btn-danger">Delete</button></td>
+                    <td>
+                        <a href="/adminhome/allPosts/<%= postList[i].postId%>">
+                            <input type="submit" value="Delete" class="btn btn-danger" name="btnDelete">
+                        </a>
+                    </td>
     
                 </tr>
                 <tr>
                     <td colspan="8"><hr></td>
                 </tr> 
                 <% } %>
-                  
             </table>
+        <!-- </form> -->
 </body>
 </html>
