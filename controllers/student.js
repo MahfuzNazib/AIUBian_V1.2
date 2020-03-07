@@ -196,9 +196,22 @@ router.post('/notifiClear', function(req, res){
 //View Profie
 
 router.get('/viewProfile/:UserId', function(req, res){
-    userModel.viewUser(req.params.UserId, function(results){
-        //console.log(results);
-        res.render('viewProfile/profileOfStudent', {data : results});
+    userModel.viewUser(req.params.UserId, function(userInfo){
+        console.log(userInfo.type);
+        if(userInfo.type == "Student"){
+            userModel.showUserPosts(req.params.UserId, function(postList){
+                //console.log(postList);
+                res.render('viewProfile/profileOfStudent', {data : userInfo, postList : postList});
+            });
+        }
+        else if(userInfo.type == "Faculty"){
+            res.send('Faculty Profile Requested');
+            //res.render('viewProfile/profileOfFaculty', {data : results});
+        }
+        else{
+            //res.render('viewProfile/profileOfAlumni', {data : results});
+        }
+        //res.render('viewProfile/profileOfStudent', {data : results});
     });
 });
 

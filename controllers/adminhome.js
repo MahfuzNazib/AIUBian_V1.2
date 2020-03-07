@@ -1,8 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var userModel   = require.main.require('./models/user-model');
+var adminModel   = require.main.require('./models/admin-model');
 
 router.get('/', function(req, res){
-    res.render('adminhome/index');
+    adminModel.getTotalPost(function(results){
+        console.log(results);
+        res.render('adminhome/index', {data : results});
+    });
 });
 
 router.get('/allPosts', function(req, res){

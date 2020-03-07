@@ -22,6 +22,8 @@
 
     <!--CSS Link-->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/App.css">
+    <link rel="stylesheet" href="/css/Admin.css">
     
     <title>Profile</title>
 </head>
@@ -275,6 +277,96 @@
             <div class="col-sm-2"></div>            
         </div>
         <br>
+
+
+        <center>
+            <h2><%= data.name%> Post</h2>
+        </center>
+
+        <!--Show This Users Post -->
+        <% for(var i=0; i < postList.length; i++){%>
+            <div class="row">
+                <!--Left Part-->
+                <div class="col-sm-2"> <!--Empty Side--></div>
+                <!--Middle Part-->
+                <div class="col-sm-8 container bg card">
+                    <!--My Post List-->
+                    <br>
+                    <div class="container bg card">
+                        <br>
+                        <table border="0">
+                            <!--Name,Status Row-->
+                            <tr>
+                                <td width="2%"><img src="/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
+                                <td width="90%">
+                                    <text class="name"> <%= postList[i].username%> </text>
+                                    <span class="badge badge-pill badge-secondary">Student</span>
+                                </td>
+                            </tr>
+    
+                            <!--Date Time Row-->
+                            <tr>
+                                <td></td>
+                                <td hidden> <%= postList[i].postId%> </td>
+                                <td > <%= postList[i].postDate%> </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <hr>
+                                </td>
+                            </tr>
+    
+                            <!--Image/Video/Text Row-->
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    <p class="postTextDisplay"> <%= postList[i].text%> </p>
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <td>
+                                    <!-- <p> <%= postList[i].text%> </p> -->
+                                </td>
+                                <td>
+                                    <img src="/<%= postList[i].image%>" height="300px" width="70%">
+                                </td>
+                            </tr>
+                        </table>
+                        <table border="0">
+                            <tr>
+                                
+                                <td>
+                                    <center>
+                                        <button class="btn btn-light">
+                                            Like <span class="badge badge-primary"><%= postList[i].postLike%></span>
+                                        </button>
+                                    </center>
+                                </td>
+                                <td>
+                                    <button class="btn btn-light">
+                                        Comments <span class="badge badge-primary">15</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                    </div>
+                    <br>
+                </div>
+                <br><br>
+                <!--Right Part-->
+                <div class="col-sm-2"><!--Empty Side--></div>
+                <br><br>
+            </div>
+            <br><br>
+        <% } %>
+
+
+
         <!--Fotter-->
         <div class="fotter">
             copyright@nazib

@@ -246,7 +246,21 @@ module.exports= {
 		var sql = "SELECT * FROM userinfo WHERE UserId = ?";
 		db.getResults(sql, [UserId], function(results){
 			if(results.length > 0){
-				console.log(results);
+				//console.log(results);
+				callback(results[0]);
+			}
+			else{
+				callback(null);
+			}
+		});
+	},
+
+	showUserPosts : function(UserId, callback){
+		//var sql = "SELECT * FROM userinfo INNER JOIN post ON userinfo.username = post.username where userinfo.UserId = ? ORDER BY post.postId DESC ";
+		var sql = "SELECT * FROM post WHERE username = (SELECT username FROM userinfo WHERE UserId = ?) ORDER BY postId DESC";
+		db.getResults(sql, [UserId], function(results){
+			if(results.length > 0){
+				//console.log(results);
 				callback(results);
 			}
 			else{
