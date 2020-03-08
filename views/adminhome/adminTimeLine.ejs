@@ -103,39 +103,35 @@
         <!--Middle Part-->
         <div class="col-sm-8 container bg card">
             <!--TimeLine Section/Post Section-->
-            <form>
+            <form method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="comment">Create Post</label>
-                  <textarea class="form-control" rows="5" id="comment" placeholder="Whats on Your Mind?"></textarea>
+                  <textarea class="form-control" rows="5" id="comment" name="text" placeholder="Whats on Your Mind?"></textarea>
                 </div>
-              </form>
               <table border="0">
                   <tr>
                     <td>
                         <center>
-                            <span class="btn btn-primary btn-file">
-                                Add Photo <input type="file">
+                            <span class="btn btn-primary ">
+                                 <input type="file" name="image">
                             </span>
                         </center>
+
+                        <div id="imgName">
+                        </div>
                     </td>
 
                     <td>
                         <center>
-                            <span class="btn btn-primary btn-file">
-                                Add Video <input type="file">
-                            </span>
-                        </center>
-                    </td>
-
-                    <td>
-                        <center>
-                            <span class="btn btn-info">
+                            <!-- <span class="btn btn-info" name="post">
                                 Post
-                            </span>
+                            </span> -->
+                            <input type="submit" value="Post" class="btn btn-info" name="post">
                         </center>
                     </td>
                   </tr>
               </table>
+            </form>
               <br>
         </div>
 
@@ -145,157 +141,101 @@
     </div>
     <br>
 
-    <div class="row">
-        <!--Left Part-->
-        <div class="col-sm-2"> <!--Empty Side--></div>
-        <!--Middle Part-->
-        <div class="col-sm-8 container bg card">
-            <!--My Post List-->
-            <br>
-            <div class="container bg card">
+    <% for(var i=0; i < postList.length; i++){%>
+        <div class="row">
+            <!--Left Part-->
+            <div class="col-sm-2"> <!--Empty Side--></div>
+            <!--Middle Part-->
+            <div class="col-sm-8 container bg card">
+                <!--My Post List-->
                 <br>
-                <table border="0">
-                    <!--Name,Status Row-->
-                    <tr>
-                        <td width="2%"><img src="/images/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
-                        <td width="90%">
-                            <text class="name">Nazib Mahfuz</text>
-                            <span class="badge badge-pill badge-success">Admin</span>
-                        </td>
-                        <!--Edit/Delete Post Button-->
-                        <td width="10%">
-                            <div class="dropdown">
-                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <span>.</span>
-                                  <span>.</span>
-                                  <span>.</span>
-                                  
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#"><button class="btn btn-primary">Edit Post</button></a>
-                                  <a class="dropdown-item" href="#"><button class="btn btn-danger">Delete Post </button></a>
+                <div class="container bg card">
+                    <br>
+                    <table border="0">
+                        <!--Name,Status Row-->
+                        <tr>
+                            <td width="2%"><img src="/adminPicture.png" class="rounded-circle" height="40px" width="40px"></td>
+                            <td width="90%">
+                                <text class="name"> <%= postList[i].name1%> </text>
+                                <span class="badge badge-pill badge-secondary"><%= postList[i].type1%></span>
+                            </td>
+                            <!--Edit/Delete Post Button-->
+                            <td width="10%">
+                                <div class="dropdown">
+                                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span>.</span>
+                                    <span>.</span>
+                                    <span>.</span>
+                                    
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#"><button class="btn btn-primary">Edit Post</button></a>
+                                    <a class="dropdown-item" href="#"><button class="btn btn-danger">Delete Post </button></a>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
 
-                    <!--Date Time Row-->
-                    <tr>
-                        <td></td>
-                        <td>25-02-2020, <i>06:21:36 PM</i></td>
-                    </tr>
+                        <!--Date Time Row-->
+                        <tr>
+                            <td></td>
+                            <td hidden> <%= postList[i].postId%> </td>
+                            <td > <%= postList[i].postDate%> </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <hr>
+                            </td>
+                        </tr>
 
-                    <!--Image/Video/Text Row-->
-                    <tr>
-                        <td></td>
-                        <td>
-                            <img src="/images/1easuM.jpg" height="300px" width="70%">
-                        </td>
-                    </tr>
-                </table>
-                <table border="0">
-                    <tr>
-                        
-                        <td>
-                            <center>
+                        <!--Image/Video/Text Row-->
+                        <tr>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                <p class="postTextDisplay"> <%= postList[i].text%> </p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <!-- <p> <%= postList[i].text%> </p> -->
+                            </td>
+                            <td>
+                                <img src="/<%= postList[i].image%>" height="300px" width="70%">
+                            </td>
+                        </tr>
+                    </table>
+                    <table border="0">
+                        <tr>
+                            
+                            <td>
+                                <center>
+                                    <button class="btn btn-light">
+                                        Like <span class="badge badge-primary"><%= postList[i].postLike%></span>
+                                    </button>
+                                </center>
+                            </td>
+                            <td>
                                 <button class="btn btn-light">
-                                    Like <span class="badge badge-primary">15</span>
+                                    Comments <span class="badge badge-primary">15</span>
                                 </button>
-                            </center>
-                        </td>
-                        <td>
-                            <button class="btn btn-light">
-                                Comments <span class="badge badge-primary">15</span>
-                            </button>
-                        </td>
-                    </tr>
-                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                </div>
                 <br>
             </div>
-            <br>
+            <br><br>
+            <!--Right Part-->
+            <div class="col-sm-2"><!--Empty Side--></div>
+            <br><br>
         </div>
         <br><br>
-        <!--Right Part-->
-        <div class="col-sm-2"><!--Empty Side--></div>
-        <br><br>
-    </div>  
-    <br>
-    
-    <!--Another Post-->
-
-    <div class="row">
-        <!--Left Part-->
-        <div class="col-sm-2"> <!--Empty Side--></div>
-        <!--Middle Part-->
-        <div class="col-sm-8 container bg card">
-            <!--My Post List-->
-            <br>
-            <div class="container bg card">
-                <br>
-                <table border="0">
-                    <!--Name,Status Row-->
-                    <tr>
-                        <td width="2%"><img src="/images/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
-                        <td width="90%">
-                            <text class="name">Nazib Mahfuz</text>
-                            <span class="badge badge-pill badge-secondary">Student</span>
-                        </td>
-                        <!--Edit/Delete Post Button-->
-                        <td width="10%">
-                            <div class="dropdown">
-                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <span>.</span>
-                                  <span>.</span>
-                                  <span>.</span>
-                                  
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#"><button class="btn btn-primary">Edit Post</button></a>
-                                  <a class="dropdown-item" href="#"><button class="btn btn-danger">Delete Post </button></a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <!--Date Time Row-->
-                    <tr>
-                        <td></td>
-                        <td>25-02-2020, <i>06:21:36 PM</i></td>
-                    </tr>
-
-                    <!--Image/Video/Text Row-->
-                    <tr>
-                        <td></td>
-                        <td>
-                            <img src="/images/yBhCqU.jpg.png" height="300px" width="70%">
-                        </td>
-                    </tr>
-                </table>
-                <table border="0">
-                    <tr>
-                        
-                        <td>
-                            <center>
-                                <button class="btn btn-light">
-                                    Like <span class="badge badge-primary">15</span>
-                                </button>
-                            </center>
-                        </td>
-                        <td>
-                            <button class="btn btn-light">
-                                Comments <span class="badge badge-primary">15</span>
-                            </button>
-                        </td>
-                    </tr>
-                </table>
-                <br>
-            </div>
-            <br>
-        </div>
-        <br><br>
-        <!--Right Part-->
-        <div class="col-sm-2"><!--Empty Side--></div>
-        <br><br>
-    </div>
+    <% } %>
+    <br><br>
 </body>
 </html>

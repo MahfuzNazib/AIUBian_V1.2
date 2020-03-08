@@ -333,5 +333,17 @@ module.exports= {
 			}
 		});
 
+	},
+
+	getAdminPost : function(callback){
+		var sql = "SELECT * FROM post WHERE type1 = 'Admin' ORDER BY postId DESC";
+		db.getResults(sql, null, function(results){
+			if(results.length > 0){
+				callback(results);
+			}
+			else{
+				callback([]);
+			}
+		});
 	}
 }

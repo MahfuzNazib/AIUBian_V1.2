@@ -134,25 +134,6 @@ router.post('/timeLine', upload.single('image'), function(req, res, next){
             }
         });
     });
-        // var datetime    = new Date();
-        // var image       = req.file.filename;
-        // var createPost  = {
-        //     postDate    : datetime.toISOString().slice(0,10),
-        //     text        : req.body.text,
-        //     images      : image,
-        //     video       : 'null',
-        //     username    : req.cookies['username'],
-        //     postLike    : 0
-        // };
-        // console.log(createPost.username);
-        // userModel.insertPost(createPost, function(status){
-        //     if(status){
-        //         res.redirect('/studentHome/timeLine');
-        //     }
-        //     else{
-        //         res.send('Posting Failed');
-        //     }
-        // });
 });
 
 
@@ -184,7 +165,6 @@ router.post("/likeExe", function(req, res){
 
     userModel.updateLike(user, function(status){ 
         if(status){
-            
             var notifiInfo = {
                 sender : req.cookies.username,
                 receiver: req.body.username

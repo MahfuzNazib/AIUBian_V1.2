@@ -22,7 +22,11 @@ router.get('/', function(req, res){
         console.log(results);
         adminModel.getTotalMember(function(totalMember){
             console.log(totalMember);
-            res.render('adminhome/index', {data : results, totalMember : totalMember});
+            adminModel.getMyData(req.cookies['username'], function(myData){
+                console.log(myData);
+                res.render('adminhome/index', {data : results, totalMember : totalMember, myData : myData});
+            });
+            //res.render('adminhome/index', {data : results, totalMember : totalMember});
         });
     });
 });
@@ -177,8 +181,42 @@ router.get('/studentMemberList', function(req, res){
 
 //Admin TimeLine Request
 router.get('/adminTimeLine', function(req, res){
-    res.render('adminHome/adminTimeLine');
+    // res.render('adminHome/adminTimeLine');
+     adminModel.getMyData(req.cookies['username'], function(userInfo){
+        userModel.getMyPost(req.cookies['username'], function(results){
+            res.render('adminHome/adminTimeLine', {postList : results, userInfo : userInfo});
+        });
+     });
 });
+
+
+router.post('/adminTimeLine', upload.single('image'), function(req, res, next){
+    
+    adminModel.getMyData(req.cookies['username'], function(result){
+        var datetime    = new Date();
+        var image       = req.file.filename;
+        var createPost  = {
+            postDate    : datetime.toISOString().slice(0,10),
+            text        : req.body.text,
+            images      : image,
+            video       : 'null',
+            username    : req.cookies['username'],
+            postLike    : 0,
+            name        : result.name,
+            type        : 'Admin'
+        };
+        console.log(createPost.username);
+        userModel.insertPost(createPost, function(status){
+            if(status){
+                res.redirect('/adminhome/adminTimeLine');
+            }
+            else{
+                res.send('Posting Failed');
+            }
+        });
+    });
+});
+
 
 //Settings Page Request
 router.get('/settings', function(req, res){
