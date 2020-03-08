@@ -113,8 +113,13 @@
                         <td>
                             <span class="badge badge-primary"><%= userList[i].type %></span>
                         </td>
-                        <td><button class="btn btn-info">View Profile</button></td>
                         <td>
+                            <a href="/adminhome/viewProfile/<%= userList[i].UserId%>">
+                                <button class="btn btn-info">View Profile</button>
+                            </a>
+                        </td>
+                        <td>
+                            
                             <button class="btn btn-warning">Block</button>
                             <button class="btn btn-danger">Delete</button>
                         </td>

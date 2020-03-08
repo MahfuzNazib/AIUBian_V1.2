@@ -33,10 +33,7 @@ router.get('/allPosts/:postId', function(req, res){
     });
     // res.send(req.params.postId);
 });
-// router.post('/allPosts', function(req, res){
-    
-//     res.send('Post Method Called');
-// });
+
 
 //Chat Page Request
 router.get('/chat', function(req, res){
@@ -117,6 +114,27 @@ router.get('/settings', function(req, res){
 //New Admin Request
 router.get('/newAdmin', function(req, res){
     res.render('adminHome/newAdmin');
+});
+
+
+//View Users
+router.get('/viewProfile/:UserId', function(req, res){
+    userModel.viewUser(req.params.UserId, function(userInfo){
+        console.log(userInfo.type);
+        if(userInfo.type == "Student"){
+            userModel.showUserPosts(req.params.UserId, function(postList){
+                res.render('viewProfile/profileOfStudent', {data : userInfo, postList : postList});
+            });
+        }
+        else if(userInfo.type == "Faculty"){
+            res.send('Faculty Profile Requested');
+            //res.render('viewProfile/profileOfFaculty', {data : results});
+        }
+        else{
+            res.send('Alumni Page Requested');
+            //res.render('viewProfile/profileOfAlumni', {data : results});
+        }
+    });
 });
 
 
