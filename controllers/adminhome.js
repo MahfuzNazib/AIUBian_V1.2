@@ -2,6 +2,20 @@ var express = require('express');
 var router = express.Router();
 var userModel   = require.main.require('./models/user-model');
 var adminModel   = require.main.require('./models/admin-model');
+var multer      = require('multer'); 
+var fs          = require('fs');
+var date        = require('date-and-time');
+
+var storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, 'uploads/');
+	},
+	filename: (req, file, cb) => {
+		cb(null, Date.now()+'-'+file.originalname);
+	}
+});
+
+var upload = multer({ storage });
 
 router.get('/', function(req, res){
     adminModel.getTotalPost(function(results){
@@ -42,13 +56,39 @@ router.get('/chat', function(req, res){
 
 //Profile Page Request
 router.get('/profile', function(req, res){
-    res.render('adminhome/profile');
+    adminModel.getMyData(req.cookies['username'], function(results){
+        res.render('adminhome/profile',{data : results});
+    });
+    
 });
 
 //Edit Profile Page Request
 router.get('/editProfile', function(req, res){
-    res.render('adminhome/editProfile');
+    adminModel.getMyData(req.cookies['username'], function(results){
+        res.render('adminhome/editProfile',{data : results});
+    });
 });
+
+//Edit Profile Picture
+router.post('/profilePicture', upload.single('image'), function(req, res, next){
+    var user = {
+        profilePicture : req.file.filename,
+        username : req.cookies['username']
+    }
+    
+    adminModel.updateProfilePicture(user, function(status){
+        if(status){
+            // console.log(user);
+            res.redirect('/adminhome/editProfile');
+        }
+        else{
+            res.send('Profile picture uploded Failed');
+        }
+    });
+
+});
+
+
 
 //Faculty Post Request
 router.get('/facultyPost', function(req, res){
@@ -79,6 +119,21 @@ router.get('/allMemberList', function(req, res){
         res.render('adminhome/allMemberList', {userList : results});
     });
 });
+
+
+//Delete Member from All member Lists
+router.get('/allMemberList/:UserId', function(req, res){
+    adminModel.deleteMember(req.params.UserId, function(status){
+        if(status){
+            res.redirect('/adminhome/allMemberList');
+        }
+        else{
+            res.send('Not Deleted !!');
+        }
+    });
+});
+
+
 
 //Faculty Member List Request
 router.get('/facultyMemberList', function(req, res){
@@ -117,6 +172,41 @@ router.get('/newAdmin', function(req, res){
 });
 
 
+router.post('/newAdmin', function(req, res){
+    // res.render('adminHome/newAdmin');
+    var adminInfo = {
+        name : req.body.name,
+        email : req.body.email,
+        phone : req.body.phone,
+        username : req.body.userName,
+        password : req.body.Password,
+        aiub_id : '000',
+        department : '000',
+        type : 'Admin',
+        profilePicture : null
+    };
+
+    adminModel.addAdmin(adminInfo, function(status){
+        console.log(adminInfo);
+        if(status){
+            adminModel.adminLogin(adminInfo, function(result){
+                //console.log(result);
+                if(result){
+                    res.send('New Admin Registered');
+                }
+                else{
+                    res.send('Problem Occure on Login Table !!');
+                }
+            });
+        }  
+        else{
+            res.send('Not Registered');
+        }
+    });
+
+});
+
+
 //View Users
 router.get('/viewProfile/:UserId', function(req, res){
     userModel.viewUser(req.params.UserId, function(userInfo){
@@ -136,6 +226,9 @@ router.get('/viewProfile/:UserId', function(req, res){
         }
     });
 });
+
+
+
 
 
 module.exports = router;

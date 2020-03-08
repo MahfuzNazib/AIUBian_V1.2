@@ -52,6 +52,7 @@
         <div  class="container bg card">
             <h2>Add New Admin</h2>
             <br>
+            <form method="POST">
                 <!--Name-->
                 <div class="inputLength">
                     <input type="text" class="form-control" placeholder="Full Name" name="name" required><br>
@@ -61,7 +62,7 @@
                 </div>
                 
                 <div >
-                    <input type="number" class="form-control" placeholder="Phone No" name="aiub_id" required><br>
+                    <input type="number" class="form-control" placeholder="Phone No" name="phone" required><br>
                 </div>
 
                 <div >
@@ -72,13 +73,14 @@
                     <input type="password" class="form-control" placeholder="Set Password" name="Password" required>
                 </div><br>
             </div>
+        
             <div>
-                <input type="submit" value="SIGN UP" class="btn btn-success "> | 
-                <a href="/adminhome">
-                    <button class="btn btn-primary">Back</button>
-                </a><br><br><br><br>
+                <input type="submit" value="SIGN UP" class="btn btn-success ">
             </div>
-            Have Already Account? <a href="/login">Login here</a>
+        </form>
+        <br><br>
+            Have Already Account? <a href="/login">Login here</a> | <a href="/adminhome">Back Home</a>
+            
         </div>
     </center>  
    

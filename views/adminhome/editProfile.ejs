@@ -30,7 +30,7 @@
 <body class="studentProfileBody">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a class="navbar-brand" href="/adminhome">  Nazib Mahfuz &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</a>
+            <a class="navbar-brand" href="/adminhome">  <%= data.name%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -62,7 +62,7 @@
                 <br>
                 <center>
                     <div class="container">
-                        <img src="/images/n2.JPG" class="rounded-circle" height="200px" width="30%">
+                        <img src="/<%= data.profilePicture%>" class="rounded-circle" height="200px" width="30%">
                     </div>
                 </center>
                 <br>
@@ -71,19 +71,11 @@
                 </center>
                 <!--Profile Picture File Choose-->
                 <center>
-                
                     <br>
-                    <div class="input-group">
-                        
-                        <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="inputGroupFile01"
-                            aria-describedby="inputGroupFileAddon01">
-                          <label class="custom-file-label" for="inputGroupFile01">Choose Profile Picture</label>
-                        </div>
-                        <div class="input-group-prepend">
-                            <input type="submit" class="btn btn-success" value="Upload Profile Picture">
-                          </div>
-                      </div>
+                      <form method="POST" action="/adminhome/profilePicture" enctype="multipart/form-data">
+                        <input type="file" name="image" multiple>
+                        <button type="submit" class="btn btn-success">Upload Profile Picture</button>
+                    </form>
                 </center>
                 <br><br>
             </div>
@@ -101,13 +93,14 @@
             <div class="col-sm-8 bg card">
                 <div class="profileInformation">
                     <br>
+                    <form method="POST">
                     <table border="0" width="100%">
                         <tr>
                             <td class="font-Normal" width="15%">
                                 Name
                             </td>
                             <td>
-                                <input type="text" class="txt-Box" name ="name" value="">
+                                <input type="text" class="txt-Box" name ="name" value="<%= data.name%>">
                             </td>
                         </tr>
 
@@ -116,7 +109,7 @@
                                 E-mail
                             </td>
                             <td>
-                                <input type="email" class="txt-Box" name="mail" value="" disabled>
+                                <input type="email" class="txt-Box" name="mail" value="<%= data.email%>" readonly>
                             </td>
                         </tr>
 
@@ -125,7 +118,7 @@
                                 Phone No
                             </td>
                             <td>
-                                <input type="number" class="txt-Box" name="phone" value="">
+                                <input type="number" class="txt-Box" name="phone" value="<%= data.phone%>">
                             </td>
                         </tr>
 
@@ -151,7 +144,7 @@
                                 Address
                             </td>
                             <td>
-                                <input type="text" class="txt-Box" name="address" value="">
+                                <input type="text" class="txt-Box" name="address" value="<%= data.address%>">
                             </td>
                         </tr>
                     </table>
@@ -166,12 +159,13 @@
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
                 <center>
-                    <button class="btn-Confirm" name="save">Save</button>
+                    <button class="btn btn-success" name="save">Update Profile</button>
                 </center>
             </div>
             <div class="col-sm-4"></div>
 
         </div>
+    </form>
         <br>
 
 </body>

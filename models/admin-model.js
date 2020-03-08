@@ -123,5 +123,71 @@ module.exports = {
 		});
 	},
 
-	
+	//Add New Admin
+
+	addAdmin : function(adminInfo, callback){
+		var sql = "INSERT INTO admin VALUES(?,?,?,?,?,?,?)";
+		db.execute(sql,[null, adminInfo.name, adminInfo.email, adminInfo.phone,null, adminInfo.username, adminInfo.profilePicture], function(status){
+			console.log(status);
+			if(status){
+				callback(true);
+			}
+			else{
+				callback(false);
+			}
+		});
+	},
+
+	adminLogin : function(adminInfo, callback){
+		//console.log(adminInfo);
+		var sql = "INSERT INTO login VALUES(?,?,?,?,?,?,?,?)";
+		db.execute(sql,[null, adminInfo.name, adminInfo.aiub_id, adminInfo.username, adminInfo.password, adminInfo.email, adminInfo.department, adminInfo.type], function(status){
+			if(status){
+				callback(true);
+			}
+			else{
+				callback(false);
+			}
+		});
+	},
+
+
+	deleteMember : function(UserId, callback){
+		var sql = "DELETE FROM userinfo WHERE UserId = ?";
+		db.execute(sql, [UserId], function(status){
+			if(status){
+				callback(true);
+			}
+			else{
+				callback(false);
+			}
+		});
+	},
+
+	updateProfilePicture : function(user, callback){
+		var sql = "UPDATE admin SET profilePicture = ? WHERE username = ? ";
+		console.log(user);
+		db.execute(sql, [user.profilePicture, user.username], function(status){
+			console.log(status);
+			if(status){
+				
+				callback(true);
+			}
+			else{
+				callback(false);
+			}
+		});
+	},
+
+	getMyData : function(username, callback){
+		var sql = "SELECT * FROM admin WHERE username = ?";
+		db.getResults(sql,[username], function(results){
+			if(results.length > 0){
+				callback(results[0]);
+			}
+			else{
+				callback([]);
+			}
+		});
+	}
 }

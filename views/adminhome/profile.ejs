@@ -30,7 +30,7 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
         
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a class="navbar-brand" href="/adminhome">  Nazib Mahfuz &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</a>
+            <a class="navbar-brand" href="/adminhome">  <%= data.name%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -62,9 +62,9 @@
                 <br>
                 <center>
                     <div class="container">
-                        <img src="/images/n2.JPG" class="rounded-circle" height="200px" width="30%">
+                        <img src="/<%= data.profilePicture%>" class="rounded-circle" height="200px" width="30%">
                     </div>
-                    <text class="displayName">Nazib Mahfuz</text>
+                    <text class="displayName"> <%= data.name%> </text>
                 </center>
                 <br>
                 <center>
@@ -94,7 +94,7 @@
                                 Email
                             </td>
                             <td class="infoItems">
-                                nazibmahfuz60@gmail.com
+                                <%= data.email%>
                             </td>
                         </tr>
 
@@ -103,11 +103,11 @@
                                 Phone No
                             </td>
                             <td class="infoItems">
-                                01777127618
+                                <%= data.phone%>
                             </td>
                         </tr>
 
-                        <tr>
+                        <!-- <tr>
                             <td class="infoHeading">
                                 Facebook
                             </td>
@@ -123,14 +123,14 @@
                             <td class="infoItems">
                                 <a href="#">https://www.linkedin.com</a>
                             </td>
-                        </tr>
+                        </tr> -->
 
                         <tr>
                             <td class="infoHeading">
                                 Address
                             </td>
                             <td class="infoItems">
-                                House:36, Road:19, Nikunja-02
+                                <%= data.address%>
                             </td>
                         </tr>
                     </table>
