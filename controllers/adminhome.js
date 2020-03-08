@@ -69,6 +69,25 @@ router.get('/editProfile', function(req, res){
     });
 });
 
+router.post('/editProfile', function(req, res){
+    var user = {
+        name : req.body.name,
+        phone : req.body.phone,
+        address : req.body.address,
+        username : req.cookies['username']
+    };
+    console.log(user);
+    adminModel.updateMyData(user, function(status){
+        if(status){
+            res.redirect('/adminhome/editProfile');
+        }
+        else{
+            res.send('Updation Failed !!');
+        }
+    });
+});
+
+
 //Edit Profile Picture
 router.post('/profilePicture', upload.single('image'), function(req, res, next){
     var user = {

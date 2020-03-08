@@ -189,5 +189,18 @@ module.exports = {
 				callback([]);
 			}
 		});
+	},
+
+	updateMyData : function(user, callback){
+		var sql = "UPDATE admin SET name = ?, phone = ?, address = ?  WHERE username = ? ";
+		db.execute(sql, [user.name, user.phone, user.address, user.username], function(status){
+			console.log(status);
+			if(status){
+				callback(true);
+			}
+			else{
+				callback(false);
+			}
+		});
 	}
 }
