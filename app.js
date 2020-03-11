@@ -12,6 +12,8 @@ var signup      = require('./controllers/signup');
 var adminHome   = require('./controllers/adminhome');
 var addAdmin    = require('./controllers/addAdmin');
 var student     = require('./controllers/student');
+var faculty     = require('./controllers/faculty');
+var almuni     = require('./controllers/almuni');
 //var logout = require('./controllers/logout');
 
 
@@ -28,6 +30,8 @@ app.use('/signup', signup);
 app.use('/adminhome', adminHome);
 app.use('/addAdmin',addAdmin);
 app.use('/studentHome', student);
+app.use('/facultyHome', faculty);
+app.use('/almuniHome', almuni);
 
 
 //Routers
