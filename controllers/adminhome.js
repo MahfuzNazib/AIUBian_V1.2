@@ -24,9 +24,17 @@ router.get('/', function(req, res){
             console.log(totalMember);
             adminModel.getMyData(req.cookies['username'], function(myData){
                 console.log(myData);
-                res.render('adminhome/index', {data : results, totalMember : totalMember, myData : myData});
+                adminModel.getTotalAdmin(function(totalAdmin){
+                    console.log(totalAdmin);
+                    adminModel.totalStudentPost(function(sPost){
+                        adminModel.totalFacultyPost(function(fPost){
+                            adminModel.totalAlumniPost(function(aPost){
+                                res.render('adminhome/index', {data : results, totalMember : totalMember, myData : myData, totalAdmin : totalAdmin, sPost : sPost, fPost : fPost, aPost : aPost});
+                            });
+                        }); 
+                    });
+                });
             });
-            //res.render('adminhome/index', {data : results, totalMember : totalMember});
         });
     });
 });
@@ -143,6 +151,18 @@ router.get('/allMemberList', function(req, res){
     });
 });
 
+
+//Searching of All MemberList Page via Post Request
+
+router.post('/allMemberList', function(req, res){
+    var src = req.body.search;
+    adminModel.searchMember(src, function(result){
+
+        console.log(src);
+        res.render('adminhome/searchMember', {userList : result});
+        // res.redirect('/adminhome/allMemberList', {userList : result});
+    });
+});
 
 //Delete Member from All member Lists
 router.get('/allMemberList/:UserId', function(req, res){
@@ -274,17 +294,53 @@ router.get('/viewProfile/:UserId', function(req, res){
             });
         }
         else if(userInfo.type == "Faculty"){
-            res.send('Faculty Profile Requested');
-            //res.render('viewProfile/profileOfFaculty', {data : results});
+            userModel.showUserPosts(req.params.UserId, function(postList){
+                res.render('viewProfile/profileOfFaculty', {data : userInfo, postList : postList});
+            });
         }
-        else{
-            res.send('Alumni Page Requested');
-            //res.render('viewProfile/profileOfAlumni', {data : results});
+        else if(userInfo.type == "Alumni"){
+            userModel.showUserPosts(req.params.UserId, function(postList){
+                res.render('viewProfile/profileOfAlumni', {data : userInfo, postList : postList});
+            });
         }
     });
 });
 
 
+//Blocked User Profile
+
+router.get('/blockProfile/:email', function(req, res){
+    adminModel.blockUser(req.params.email, function(status){
+        if(status){
+            // res.send('This User Account is Blocked. Check BlockList !!');
+            res.redirect('/adminhome/blockList');
+        }
+        else{
+            res.send('Not Blocking');
+        }
+    });
+});
+
+//Get BlockList
+
+router.get('/blockList', function(req, res){
+    adminModel.blockList(function(results){
+        res.render('adminhome/blockList', {userList : results});
+    });
+});
+
+
+router.get('/unBlock/:email', function(req, res){
+    adminModel.unBlockUser(req.params.email, function(status){
+        if(status){
+            // res.send('Profile Successfully Unblocked.');
+            res.redirect('/adminhome/blockList');
+        }
+        else{
+            res.send('Still Blocked');
+        }
+    });
+});
 
 
 

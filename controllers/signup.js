@@ -14,7 +14,8 @@ router.post('/', function(req, res){
         department : req.body.department,
         email : req.body.mail,
         username : req.body.username,
-        password : req.body.password
+        password : req.body.password,
+        blocked : 'false'
         
     }
 
