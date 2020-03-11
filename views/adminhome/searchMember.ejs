@@ -16,6 +16,9 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
+    <!--Google Fonts Link-->
+    <link href="https://fonts.googleapis.com/css?family=Cuprum|El+Messiri|Lobster&display=swap" rel="stylesheet">
+
     <!--CSS LINK-->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/App.css">
@@ -43,14 +46,6 @@
                     <a class="nav-link" href="/adminhome">
                         <button type="button" class="btn btn-light">
                             Home
-                        </button>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/adminhome/allMemberList">
-                        <button type="button" class="btn btn-light">
-                            All Member List 
                         </button>
                     </a>
                 </li>
@@ -92,9 +87,13 @@
         <br><br><br>
 
         <center>
-            <h2>Student Member List</h2>
+            <h2>Search Results</h2>
           </center>
             <hr>
+
+            <div>
+                User Id : <%= userList.UserId%>
+            </div>
             <table border="0" width="100%">
                 <tr class="table-header">
                     <td>Member ID</td>
@@ -107,6 +106,7 @@
                     <td>View Profile</td>
                     <td>Action</td>
                 </tr>
+
                 <% for(var i=0; i < userList.length; i++){%>
                     <tr class="postDetails">
                         <td><%= userList[i].UserId %> </td>
@@ -116,12 +116,20 @@
                         <td><%= userList[i].phone %></td>
                         <td><%= userList[i].aiub_id %></td>
                         <td>
-                            <span class="badge badge-primary">Student</span>
+                            <span class="badge badge-primary"><%= userList[i].type %></span>
                         </td>
-                        <td><button class="btn btn-info">View Profile</button></td>
                         <td>
+                            <a href="/adminhome/viewProfile/<%= userList[i].UserId%>">
+                                <button class="btn btn-info">View Profile</button>
+                            </a>
+                        </td>
+                        <td>
+                            
                             <button class="btn btn-warning">Block</button>
-                            <button class="btn btn-danger">Delete</button>
+                            <!-- <button class="btn btn-danger">Delete</button> -->
+                            <a href="/adminhome/allMemberList/<%= userList[i].UserId%>">
+                                <button class="btn btn-danger">Delete</button>
+                            </a>
                         </td>
                     </tr>
 
@@ -129,6 +137,6 @@
                         <td colspan="9"><hr></td>
                     </tr>
                 <% } %>
-            </table>
-</body>
+            </table>    
+    </body>
 </html>

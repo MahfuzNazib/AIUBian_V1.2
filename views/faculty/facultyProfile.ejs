@@ -22,9 +22,9 @@
 
     <!--CSS Link-->
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/App.css">
-    <link rel="stylesheet" href="/css/Admin.css">
-    
+    <script type="text/javascript" src="/script/student.js"></script>
+    <script type="text/javascript" src="/script/jquery-3.4.1.js"></script>
+
     <title>Profile</title>
 </head>
 <body class = "studentProfileBody">
@@ -36,23 +36,61 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <!-- <a class="navbar-brand" href="/studentHome">  <%= data.name%> </a>
+            <a class="navbar-brand" href="/facultyHome">  <%= user.name%> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
-            </button> -->
+            </button>
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     
-                  <a class="nav-link" href="/studentHome">
+                  <a class="nav-link" href="/facultyHome">
                     <button class="btn btn-light">
                         Home
                     </button>
                     <span class="sr-only">(current)</span></a>
                 </li>
                 
+                <li class="nav-item">
+                    <a class="nav-link" href="/facultyHome/timeLine">
+                        <button type="button" class="btn btn-light">
+                            Time Line
+                        </button>
+                    </a>
+                </li>
                 
+                <li class="nav-item">
+                    <a class="nav-link" href="/facultyHome/chat">
+                        <button type="button" class="btn btn-light">
+                            Messages <span class="badge badge-primary">4</span>
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> 
+                        <button type="button" class="btn btn-light">
+                            Notification <span class="badge badge-primary">15</span>
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/facultyHome/settings">
+                        <button class="btn btn-light">
+                            Settings
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">
+                        <button class="btn btn-danger">
+                            Logout
+                        </button>
+                    </a>
+                </li>
 
             </div>
         </nav>
@@ -71,12 +109,14 @@
                 <br>
                 <center>
                     <div class="container">
-                        <img src="/<%= data.profilePicture %>" class="rounded-circle" height="200px" width="30%">
+                        <img src="/<%= user.profilePicture %>" class="rounded-circle" height="200px" width="30%">
                     </div>
-                    <text class="displayName"> <%= data.name%> </text>
+                    <text class="displayName"> <%= user.name%> </text>
                 </center>
                 <br>
-                
+                <center>
+                    <a href="/facultyHome/editProfile"><button class="btn btn-info">Update Profile</button> </a>
+                </center>
                 <br><br>
             </div>
 
@@ -101,7 +141,7 @@
                                 Email
                             </td>
                             <td class="infoItems">
-                                <%= data.email%>
+                                <%= user.email%>
                             </td>
                         </tr>
 
@@ -110,7 +150,7 @@
                                 Phone No
                             </td>
                             <td class="infoItems">
-                                <%= data.phone%>
+                                <%= user.phone%>
                             </td>
                         </tr>
 
@@ -119,7 +159,7 @@
                                 Facebook
                             </td>
                             <td class="infoItems">
-                                <a href="<%= data.facebook%>"><%= data.facebook%></a>
+                                <a href="<%= user.facebook%>"><%= user.facebook%></a>
                             </td>
                         </tr>
 
@@ -128,7 +168,7 @@
                                 LinkedIn
                             </td>
                             <td class="infoItems">
-                                <a href="<%= data.linkedin%>"><%= data.linkedin%></a>
+                                <a href="<%= user.linkedin%>"><%= user.linkedin%></a>
                             </td>
                         </tr>
                     </table>
@@ -150,7 +190,7 @@
                                     AIUB ID
                                 </td>
                                 <td class="infoItems">
-                                    <%= data.aiub_id %>
+                                    <%= user.aiub_id %>
                                 </td>
                             </tr>
 
@@ -159,36 +199,29 @@
                                     Department
                                 </td>
                                 <td class="infoItems">
-                                    <%= data.department %>
+                                    <%= user.department %>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td class="infoHeading">
-                                    Program
+                                    Joining Date
                                 </td>
                                 <td class="infoItems">
-                                    <%= data.program %>
+                                    <%= user.joiningDate %>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td class="infoHeading">
-                                    Semester
+                                    Working Domain
                                 </td>
                                 <td class="infoItems">
-                                    <%= data.semester %>
+                                    <%= user.workingDomian %>
                                 </td>
                             </tr>
 
-                            <tr>
-                                <td class="infoHeading">
-                                    Thesis Name
-                                </td>
-                                <td class="infoItems">
-                                    <%= data.thesisName %>
-                                </td>
-                            </tr>
+                            
                         </table>
                     </div>
                 </div>
@@ -209,7 +242,7 @@
                                 Skills
                             </td>
                             <td class="infoItems">
-                                <%= data.skills %>
+                                <%= user.skills %>
                             </td>
                         </tr>
                     </table>
@@ -232,25 +265,25 @@
                                 Github
                             </td>
                             <td class="infoItems">
-                                <a href="<%= data.github %>"><%= data.github %></a>
+                                <a href="<%= user.github %>"><%= user.github %></a>
                             </td>
                         </tr>
 
                         <tr>
                             <td class="infoHeading">
-                                Stack Overflow
+                                Working Place
                             </td>
                             <td class="infoItems">
-                                <a href="<%= data.stackoverflow %>"> <%= data.stackoverflow %></a>
+                                <a href="<%= user.stackoverflow %>"> <%= user.workingPlace %></a>
                             </td>
                         </tr>
 
                         <tr>
                             <td class="infoHeading">
-                                Hacker Rank
+                                Published Paper
                             </td>
                             <td class="infoItems">
-                                <a href="<%= data.hackerrank %>"><%= data.hackerrank %></a>
+                                <%= user.publishedPaper %>
                             </td>
                         </tr>
 
@@ -268,7 +301,7 @@
                                 Portfolio
                             </td>
                             <td class="infoItems">
-                                <a href="<%= data.portfolio %>"><%= data.portfolio %></a>
+                                <a href="<%= user.portfolio %>"><%= user.portfolio %></a>
                             </td>
                         </tr>
                     </table>
@@ -277,96 +310,6 @@
             <div class="col-sm-2"></div>            
         </div>
         <br>
-
-
-        <center>
-            <h2><%= data.name%>'s Posts</h2>
-        </center>
-
-        <!--Show This Users Post -->
-        <% for(var i=0; i < postList.length; i++){%>
-            <div class="row">
-                <!--Left Part-->
-                <div class="col-sm-2"> <!--Empty Side--></div>
-                <!--Middle Part-->
-                <div class="col-sm-8 container bg card">
-                    <!--My Post List-->
-                    <br>
-                    <div class="container bg card">
-                        <br>
-                        <table border="0">
-                            <!--Name,Status Row-->
-                            <tr>
-                                <td width="2%"><img src="/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
-                                <td width="90%">
-                                    <text class="name"> <%= postList[i].username%> </text>
-                                    <span class="badge badge-pill badge-secondary">Student</span>
-                                </td>
-                            </tr>
-    
-                            <!--Date Time Row-->
-                            <tr>
-                                <td></td>
-                                <td hidden> <%= postList[i].postId%> </td>
-                                <td > <%= postList[i].postDate%> </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <hr>
-                                </td>
-                            </tr>
-    
-                            <!--Image/Video/Text Row-->
-                            <tr>
-                                <td>
-                                    
-                                </td>
-                                <td>
-                                    <p class="postTextDisplay"> <%= postList[i].text%> </p>
-                                </td>
-                            </tr>
-    
-                            <tr>
-                                <td>
-                                    <!-- <p> <%= postList[i].text%> </p> -->
-                                </td>
-                                <td>
-                                    <img src="/<%= postList[i].image%>" height="300px" width="70%">
-                                </td>
-                            </tr>
-                        </table>
-                        <table border="0">
-                            <tr>
-                                
-                                <td>
-                                    <center>
-                                        <button class="btn btn-light">
-                                            Like <span class="badge badge-primary"><%= postList[i].postLike%></span>
-                                        </button>
-                                    </center>
-                                </td>
-                                <td>
-                                    <button class="btn btn-light">
-                                        Comments <span class="badge badge-primary">15</span>
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
-                        <br>
-                    </div>
-                    <br>
-                </div>
-                <br><br>
-                <!--Right Part-->
-                <div class="col-sm-2"><!--Empty Side--></div>
-                <br><br>
-            </div>
-            <br><br>
-        <% } %>
-
-
-
         <!--Fotter-->
         <div class="fotter">
             copyright@nazib

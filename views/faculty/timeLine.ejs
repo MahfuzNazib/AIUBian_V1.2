@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +20,7 @@
     <!--Google Fonts Link-->
     <link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">
 
+
     <!--CSS Link-->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/App.css">
@@ -39,7 +40,7 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a class="navbar-brand" href="/studentHome">  <%= userInfo.name%> </a>
+                <a class="navbar-brand" href="/facultyHome">  <%= userInfo.name%> </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -48,7 +49,7 @@
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         
-                      <a class="nav-link" href="/studentHome">
+                      <a class="nav-link" href="/facultyHome">
                         <button class="btn btn-light">
                             Home
                         </button>
@@ -64,7 +65,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="/studentHome/chat">
+                        <a class="nav-link" href="/facultyHome/chat">
                             <button type="button" class="btn btn-light">
                                 Messages <span class="badge badge-primary">0</span>
                             </button>
@@ -80,7 +81,7 @@
                     </li>
     
                     <li class="nav-item">
-                        <a class="nav-link" href="/studentHome/settings">
+                        <a class="nav-link" href="/facultyHome/settings">
                             <button class="btn btn-light">
                                 Settings
                             </button>
@@ -104,7 +105,7 @@
         <!--Left Part-->
         <div class="col-sm-2"> <!--Empty Side--></div>
         <!--Middle Part-->
-        <div class="col-sm-8 container bg card">
+        <div class="col-sm-8 container bg card"> 
             <!--TimeLine Section/Post Section-->
             <form method="POST" enctype="multipart/form-data">
                 <div class="form-group">
@@ -160,7 +161,7 @@
                             <td width="2%"><img src="/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
                             <td width="90%">
                                 <text class="name"> <%= postList[i].username%> </text>
-                                <span class="badge badge-pill badge-secondary">Student</span>
+                                <span class="badge badge-pill badge-secondary">Faculty</span>
                             </td>
                             <!--Edit/Delete Post Button-->
                             <td width="10%">
@@ -174,10 +175,11 @@
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="#"><button class="btn btn-primary">Edit Post</button></a>
                                     <!--
-                                    <a class="dropdown-item" href="#"><button class="btn btn-danger">Delete Post </button></a>
+                                    <a class="dropdown-item" href="/facultyHome/deletePost"><button class="btn btn-danger">Delete Post </button></a>
+
                                     -->
 
-                                    <button type="button" onclick="deletePostForStudent(<%= postList[i].postId %>)" class="btn btn-danger" >Delete Post </button>
+                                    <button type="button" onclick="deletePost(<%= postList[i].postId %>)" class="btn btn-danger" >Delete Post </button>
                                     </div>
                                 </div>
                             </td>
@@ -188,6 +190,7 @@
                             <td></td>
                             <td hidden> <%= postList[i].postId%> </td>
                             <td > <%= postList[i].postDate%> </td>
+                            
                         </tr>
                         <tr>
                             <td></td>

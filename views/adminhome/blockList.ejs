@@ -16,19 +16,22 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
+    <!--Google Fonts Link-->
+    <link href="https://fonts.googleapis.com/css?family=Cuprum|El+Messiri|Lobster&display=swap" rel="stylesheet">
+
     <!--CSS LINK-->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/App.css">
     <link rel="stylesheet" href="/css/Admin.css">
 
 
-    <title>All Member List</title>
+    <title>Block List</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">    
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <form class="form-inline my-2 my-lg-0" method="POST">
+            <input class="form-control mr-sm-2" type="search" placeholder="Enter Email or Name" aria-label="Search" name="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  required>Search</button>
         </form>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a class="navbar-brand" href="/adminhome">  Nazib Mahfuz</a>
@@ -43,14 +46,6 @@
                     <a class="nav-link" href="/adminhome">
                         <button type="button" class="btn btn-light">
                             Home
-                        </button>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/adminhome/allMemberList">
-                        <button type="button" class="btn btn-light">
-                            All Member List 
                         </button>
                     </a>
                 </li>
@@ -92,36 +87,34 @@
         <br><br><br>
 
         <center>
-            <h2>Student Member List</h2>
+            <h2>All Member List</h2>
           </center>
             <hr>
             <table border="0" width="100%">
                 <tr class="table-header">
                     <td>Member ID</td>
                     <td>Name</td>
-                    <td>Picture</td>
+                    <!-- <td>Picture</!--> -->
                     <td>Email</td>
-                    <td>Contact</td>
+                    <!-- <td>Contact</td> -->
                     <td>AIUB ID</td>
                     <td>Status</td>
-                    <td>View Profile</td>
+                    <!-- <td>View Profile</td> -->
                     <td>Action</td>
                 </tr>
                 <% for(var i=0; i < userList.length; i++){%>
                     <tr class="postDetails">
-                        <td><%= userList[i].UserId %> </td>
+                        <td><%= userList[i].id %> </td>
                         <td><%= userList[i].name %></td>
-                        <td><img src="/<%= userList[i].profilePicture %>" class= "rounded-circle" height="100px" width="100px"></td>
                         <td><%= userList[i].email %></td>
-                        <td><%= userList[i].phone %></td>
-                        <td><%= userList[i].aiub_id %></td>
+                        <td><%= userList[i].aiubId %></td>
                         <td>
-                            <span class="badge badge-primary">Student</span>
+                            <span class="badge badge-info"><%= userList[i].type %></span>
                         </td>
-                        <td><button class="btn btn-info">View Profile</button></td>
                         <td>
-                            <button class="btn btn-warning">Block</button>
-                            <button class="btn btn-danger">Delete</button>
+                            <a href="/adminhome/unBlock/<%= userList[i].email%>">
+                                <button class="btn btn-primary">UnBlock</button>
+                            </a>
                         </td>
                     </tr>
 
@@ -129,6 +122,6 @@
                         <td colspan="9"><hr></td>
                     </tr>
                 <% } %>
-            </table>
-</body>
+            </table>    
+    </body>
 </html>

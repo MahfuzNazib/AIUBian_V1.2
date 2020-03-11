@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/App.css">
     <link rel="stylesheet" href="/css/Admin.css">
+    <script type="text/javascript" src="/script/student.js"></script>
+    <script type="text/javascript" src="/script/jquery-3.4.1.js"></script>
+
 
     <title>Edit Profile</title>
 </head>
@@ -35,7 +38,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a class="navbar-brand" href="/studentHome">  <%= user.name%> </a>
+            <a class="navbar-brand" href="/facultyHome">  <%= user.name%> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -44,7 +47,7 @@
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     
-                  <a class="nav-link" href="/studentHome">
+                  <a class="nav-link" href="/facultyHome">
                     <button class="btn btn-light">
                         Home
                     </button>
@@ -52,7 +55,7 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="/studentHome/timeLine">
+                    <a class="nav-link" href="/facultyHome/timeLine">
                         <button type="button" class="btn btn-light">
                             Time Line
                         </button>
@@ -60,7 +63,7 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="/studentHome/chat">
+                    <a class="nav-link" href="/facultyHome/chat">
                         <button type="button" class="btn btn-light">
                             Messages <span class="badge badge-primary">4</span>
                         </button>
@@ -76,7 +79,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/studentHome/settings">
+                    <a class="nav-link" href="/facultyHome/settings">
                         <button class="btn btn-light">
                             Settings
                         </button>
@@ -114,14 +117,14 @@
                 </center>
                 <br>
                 <center>
-                    <a href="/studentHome/studentProfile"><button class="btn btn-info">View Profile</button> </a>
+                    <a href="/facultyHome/facultyProfile"><button class="btn btn-info">View Profile</button> </a>
                 </center>
                 <hr>
                 <!--Profile Picture File Choose-->
                 <center>
                 
                     <br>  
-                    <form method="POST" action="/studentHome/profilePicture" enctype="multipart/form-data">
+                    <form method="POST" action="/facultyHome/profilePicture" enctype="multipart/form-data">
                         <input type="file" name="image" multiple>
                         <button type="submit" class="btn btn-success">Upload Profile Picture</button>
                     </form>
@@ -208,7 +211,7 @@
                                 AIUB ID
                             </td>
                             <td>
-                                <input type="number" class="txt-Box" name="aiub_id" value="<%= user.aiub_id %>">
+                                <input type="text" class="txt-Box" name="aiub_id" value="<%= user.aiub_id %>">
                             </td>
                         </tr>
 
@@ -228,40 +231,21 @@
                             </td>
                         </tr>
 
-                        <tr>
+                       <tr>
                             <td class="font-Normal">
-                                Program
+                                Joining Date
                             </td>
                             <td>
-                                <select class="txt-Box" name = "program">
-                                    <option><%= user.program %></option>
-                                    <option value="CSE">CSE</option>
-                                    <option value="CSSE">CSSE</option>
-                                    <option value="CIS">CIS</option>
-                                    <option value="CS">CS</option>
-                                    <option value="EEE">EEE</option>
-                                    <option value="CoE">CoE</option>
-                                    <option value="BBA">BBA</option>
-                                    <option value="Arch.">Arch.</option>
-                                </select>
+                                <input type="text" class="txt-Box" name="joiningDate" value="<%= user.joiningDate %>">
                             </td>
                         </tr>
 
                         <tr>
                             <td class="font-Normal">
-                                Semester
+                                Working Domain
                             </td>
                             <td>
-                                <input type="number" class="txt-Box" name="semester" value="<%= user.semester %>">
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="font-Normal">
-                                Thesis Name
-                            </td>
-                            <td>
-                                <input type="number" class="txt-Box" name="thesisName" value="<%= user.thesisName %>">
+                                <input type="text" class="txt-Box" name="workingDomain" value="<%= user.workingDomain %>">
                             </td>
                         </tr>
                     </table>
@@ -324,24 +308,21 @@
                        </tr>
 
                        <tr>
-                           <td class="font-Normal">
-                               StackOverflow
-                           </td>
-                           <td>
-                               <input type="url" class="txt-Box" name="Stackoverflow" value="<%= user.stackoverflow %>">
-                           </td>
-                           
-                       </tr>
-
-                       <tr>
-                           <td class="font-Normal">
-                               Hacker Rank
-                           </td>
-                           <td>
-                               <input type="url" class="txt-Box" name="hackerrank" value="<%= user.hackerrank %>">
-                           </td>
-                           
-                       </tr>
+                            <td class="font-Normal">
+                                Working Place
+                            </td>
+                            <td>
+                                <input type="text" class="txt-Box" name="workingPlace" value="<%= user.workingPlace %>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-Normal">
+                                Published Paper
+                            </td>
+                            <td>
+                                <input type="text" class="txt-Box" name="publishedPaper" value="<%= user.publishedPaper %>">
+                            </td>
+                        </tr>
                        <!-- <tr>
                            <td class="font-Normal">
                                Online Judge

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!--===========================Bootstrap 4 CDN Link=======================================-->
+
+     <!--===========================Bootstrap 4 CDN Link=======================================-->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -18,34 +18,40 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <!--Google Fonts Link-->
-    <link href="https://fonts.googleapis.com/css?family=Cuprum|El+Messiri|Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">
 
-    <!--CSS Link-->
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/App.css">
-    <link rel="stylesheet" href="/css/Admin.css">
-    
-    <title>Profile</title>
+
+    <script type="text/javascript" src="/script/student.js"></script>
+
+    <title>Faculty Home</title>
+
+    <style>
+
+        body{
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+    </style>
 </head>
-<body class = "studentProfileBody">
-    
+<body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
         
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input type="text" id="searchEmail" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button type="button" onclick="searchProfile()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <!-- <a class="navbar-brand" href="/studentHome">  <%= data.name%> </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="navbar-brand" href="#">  <%= userInfo.name %> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
-            </button> -->
+            </button>
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     
-                  <a class="nav-link" href="/studentHome">
+                  <a class="nav-link" href="/facultyHome">
                     <button class="btn btn-light">
                         Home
                     </button>
@@ -53,43 +59,72 @@
                 </li>
                 
                 
+                <li class="nav-item">
+                    <a class="nav-link" href="/facultyHome/timeLine">
+                        <button type="button" class="btn btn-light">
+                           Time Line
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/facultyHome/chat">
+                        <button type="button" class="btn btn-light">
+                            Messages <span class="badge badge-primary">4</span>
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;-->
+                        <% if(notifiInfo != null) {%>
+                        <div id="username" hidden><%=notifiInfo[0].receiver%></div>
+                        <%}%>
+                        <button type="button" id="notification" onclick="showNotifi()"   class="btn btn-light">
+                            Notification <span id="notifiNum" class="badge badge-primary">
+
+                                <% if(notifiInfo != null) {%>
+                                    <%= notifiInfo.length %>
+                                <%}%>
+                                
+                                    
+
+                                </span>
+                        </button>
+
+                        <!--
+                        <button type="button" class="btn btn-light">
+                            Notification <span class="badge badge-primary">15</span>
+                        </button>
+                    -->
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/facultyHome/settings">
+                        <button class="btn btn-light">
+                            Settings
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">
+                        <button class="btn btn-danger">
+                            Logout
+                        </button>
+                    </a>
+                </li>
 
             </div>
-        </nav>
+          </nav>
 
-        <br><br><br>
-        
+          <br><br><br>
         <div class="row">
-            <!--Left Part-->
-            <div class="col-sm-2">
-                <!--Empty Side-->
-            </div>
 
-            <!--Middle Part-->
-            <div class="col-sm-8 bg card">
-                <!--Profile Picture Section-->
-                <br>
-                <center>
-                    <div class="container">
-                        <img src="/<%= data.profilePicture %>" class="rounded-circle" height="200px" width="30%">
-                    </div>
-                    <text class="displayName"> <%= data.name%> </text>
-                </center>
-                <br>
-                
-                <br><br>
-            </div>
-
-            <!--Right Part-->
-            <div class="col-sm-2">
-                <!--Empty Side-->
-                
-            </div>
-
-            
-        </div>
-
-        <br>
+            <!--******************************************************************-->
+            <div class = "studentProfileBody">
+            <br>
         <!--Information Part-->
         <div class="row">
             <div class="col-sm-2"></div>
@@ -101,7 +136,7 @@
                                 Email
                             </td>
                             <td class="infoItems">
-                                <%= data.email%>
+                                <%= user[0].email%>
                             </td>
                         </tr>
 
@@ -110,7 +145,7 @@
                                 Phone No
                             </td>
                             <td class="infoItems">
-                                <%= data.phone%>
+                                <%= user[0].phone%>
                             </td>
                         </tr>
 
@@ -119,7 +154,7 @@
                                 Facebook
                             </td>
                             <td class="infoItems">
-                                <a href="<%= data.facebook%>"><%= data.facebook%></a>
+                                <a href="<%= user.facebook%>"><%= user[0].facebook%></a>
                             </td>
                         </tr>
 
@@ -128,7 +163,7 @@
                                 LinkedIn
                             </td>
                             <td class="infoItems">
-                                <a href="<%= data.linkedin%>"><%= data.linkedin%></a>
+                                <a href="<%= user.linkedin%>"><%= user[0].linkedin%></a>
                             </td>
                         </tr>
                     </table>
@@ -150,7 +185,7 @@
                                     AIUB ID
                                 </td>
                                 <td class="infoItems">
-                                    <%= data.aiub_id %>
+                                    <%= user[0].aiub_id %>
                                 </td>
                             </tr>
 
@@ -159,36 +194,29 @@
                                     Department
                                 </td>
                                 <td class="infoItems">
-                                    <%= data.department %>
+                                    <%= user[0].department %>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td class="infoHeading">
-                                    Program
+                                    Joining Date
                                 </td>
                                 <td class="infoItems">
-                                    <%= data.program %>
+                                    <%= user[0].joiningDate %>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td class="infoHeading">
-                                    Semester
+                                    Working Domain
                                 </td>
                                 <td class="infoItems">
-                                    <%= data.semester %>
+                                    <%= user[0].workingDomian %>
                                 </td>
                             </tr>
 
-                            <tr>
-                                <td class="infoHeading">
-                                    Thesis Name
-                                </td>
-                                <td class="infoItems">
-                                    <%= data.thesisName %>
-                                </td>
-                            </tr>
+                            
                         </table>
                     </div>
                 </div>
@@ -209,7 +237,7 @@
                                 Skills
                             </td>
                             <td class="infoItems">
-                                <%= data.skills %>
+                                <%= user[0].skills %>
                             </td>
                         </tr>
                     </table>
@@ -232,25 +260,25 @@
                                 Github
                             </td>
                             <td class="infoItems">
-                                <a href="<%= data.github %>"><%= data.github %></a>
+                                <a href="<%= user.github %>"><%= user[0].github %></a>
                             </td>
                         </tr>
 
                         <tr>
                             <td class="infoHeading">
-                                Stack Overflow
+                                Working Place
                             </td>
                             <td class="infoItems">
-                                <a href="<%= data.stackoverflow %>"> <%= data.stackoverflow %></a>
+                                <a href="<%= user.stackoverflow %>"> <%= user[0].workingPlace %></a>
                             </td>
                         </tr>
 
                         <tr>
                             <td class="infoHeading">
-                                Hacker Rank
+                                Published Paper
                             </td>
                             <td class="infoItems">
-                                <a href="<%= data.hackerrank %>"><%= data.hackerrank %></a>
+                                sdgdfgdfgdf
                             </td>
                         </tr>
 
@@ -268,7 +296,7 @@
                                 Portfolio
                             </td>
                             <td class="infoItems">
-                                <a href="<%= data.portfolio %>"><%= data.portfolio %></a>
+                                <a href="<%= user.portfolio %>"><%= user[0].portfolio %></a>
                             </td>
                         </tr>
                     </table>
@@ -277,100 +305,98 @@
             <div class="col-sm-2"></div>            
         </div>
         <br>
+    </div>
 
+            <!--******************************************************************-->
 
-        <center>
-            <h2><%= data.name%>'s Posts</h2>
-        </center>
-
-        <!--Show This Users Post -->
-        <% for(var i=0; i < postList.length; i++){%>
-            <div class="row">
-                <!--Left Part-->
-                <div class="col-sm-2"> <!--Empty Side--></div>
-                <!--Middle Part-->
-                <div class="col-sm-8 container bg card">
-                    <!--My Post List-->
-                    <br>
+            <!--Middle Sides////Posts-->
+            <div class="col-sm-6 container ">
+                <% for(var i=0; i < user.length; i++){ %>
                     <div class="container bg card">
                         <br>
                         <table border="0">
                             <!--Name,Status Row-->
                             <tr>
-                                <td width="2%"><img src="/1easuM.jpg" class="rounded-circle" height="40px" width="40px"></td>
-                                <td width="90%">
-                                    <text class="name"> <%= postList[i].username%> </text>
-                                    <span class="badge badge-pill badge-secondary">Student</span>
+                                <td width="2%"><img src="/<%= user[i].profilePicture%>" class="rounded-circle" height="40px" width="40px"></td>
+                                <td>
+                                    <div hidden><%= user[i].UserId%></div>
+                                    <div id="username<%=i%>" hidden><%= user[i].username %></div>
+                                    <text    class="name">
+                                         <!-- <%= data[i].name %>  -->
+                                         <a href="/facultyHome/viewProfile/<%= user[i].UserId %>"> <%= user[i].name %> </a>
+                                    </text>
+                                    <span class="badge badge-pill badge-secondary"><%= user[i].type%></span>
                                 </td>
                             </tr>
-    
                             <!--Date Time Row-->
                             <tr>
                                 <td></td>
-                                <td hidden> <%= postList[i].postId%> </td>
-                                <td > <%= postList[i].postDate%> </td>
+                                <td> <%= user[i].postDate %> </td>
                             </tr>
+
                             <tr>
                                 <td></td>
                                 <td>
                                     <hr>
                                 </td>
                             </tr>
-    
-                            <!--Image/Video/Text Row-->
+
                             <tr>
+                                <td></td>
                                 <td>
-                                    
-                                </td>
-                                <td>
-                                    <p class="postTextDisplay"> <%= postList[i].text%> </p>
+                                    <p class="postTextDisplay">
+                                        <%= user[i].text %>
+                                    </p>
                                 </td>
                             </tr>
-    
+
+                            <!--Image/Video/Text Row-->
                             <tr>
+                                <td></td>
                                 <td>
-                                    <!-- <p> <%= postList[i].text%> </p> -->
-                                </td>
-                                <td>
-                                    <img src="/<%= postList[i].image%>" height="300px" width="70%">
+                                    <img src="/<%= user[i].image %>" height="300px" width="90%">
                                 </td>
                             </tr>
                         </table>
                         <table border="0">
                             <tr>
-                                
+                                <td width="2%"></td>
                                 <td>
                                     <center>
-                                        <button class="btn btn-light">
-                                            Like <span class="badge badge-primary"><%= postList[i].postLike%></span>
+                                        <!--
+                                        <button  class="btn btn-light">
+                                            Like <span class="badge badge-primary"><%=data[i].postLike %></span>
                                         </button>
+                                    -->
+
+                                    <button type="button" id="likebtn<%=i%>" onclick="like(<%= user[i].postId %>, <%= i %>)" class="btn btn-light" >
+                                        Like <span id="likeCount<%=i%>" class="badge badge-primary"><%= user[i].postLike %></span>
+                                    </button>
+
                                     </center>
                                 </td>
                                 <td>
-                                    <button class="btn btn-light">
-                                        Comments <span class="badge badge-primary">15</span>
-                                    </button>
+                                    <center>
+                                        <button class="btn btn-light">
+                                            Comments <span class="badge badge-primary">15</span>
+                                        </button>
+                                    </center>
                                 </td>
+                                <td></td>
                             </tr>
                         </table>
                         <br>
                     </div>
-                    <br>
-                </div>
-                <br><br>
-                <!--Right Part-->
-                <div class="col-sm-2"><!--Empty Side--></div>
+                    <br><br>
+                <% } %>
+
                 <br><br>
             </div>
-            <br><br>
-        <% } %>
 
-
-
-        <!--Fotter-->
-        <div class="fotter">
-            copyright@nazib
+            <div class="col-sm-3 container">
+                <br>
+                
+            </div>
         </div>
-       
 </body>
 </html>

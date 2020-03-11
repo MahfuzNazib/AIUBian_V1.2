@@ -26,6 +26,9 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/App.css">
     <link rel="stylesheet" href="/css/Admin.css">
+
+    <script type="text/javascript" src="/script/student.js"></script>
+    <script type="text/javascript" src="/script/jquery-3.4.1.js"></script>
     
     <title>Settings</title>
 </head>
@@ -38,7 +41,7 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a class="navbar-brand" href="/adminhome">  Admin </a>
+                <a class="navbar-brand" href="/almuniHome"> <%= user.name %> </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -47,7 +50,7 @@
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         
-                      <a class="nav-link" href="/adminhome">
+                      <a class="nav-link" href="/almuniHome">
                         <button class="btn btn-light">
                             Home
                         </button>
@@ -55,7 +58,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="/adminhome/adminTimeLine">
+                        <a class="nav-link" href="/almuniHome/timeLine">
                             <button type="button" class="btn btn-light">
                                 Time Line
                             </button>
@@ -63,9 +66,9 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="/adminhome/chat">
+                        <a class="nav-link" href="/almuniHome/chat">
                             <button type="button" class="btn btn-light">
-                                Messages <span class="badge badge-primary">4</span>
+                                Messages <span class="badge badge-primary">0</span>
                             </button>
                         </a>
                     </li>
@@ -73,13 +76,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#"> 
                             <button type="button" class="btn btn-light">
-                                Notification <span class="badge badge-primary">15</span>
+                                Notification <span class="badge badge-primary">0</span>
                             </button>
                         </a>
                     </li>
     
                     <li class="nav-item">
-                        <a class="nav-link" href="/adminhome/settings">
+                        <a class="nav-link" href="/almuniHome/settings">
                             <button class="btn btn-light">
                                 Settings
                             </button>
@@ -110,43 +113,50 @@
                 <h5>Name/Email Reset</h5>
                 <hr>
                 <tr>
-                    <input type="text" class="form-control" placeholder="Type To Change your Name">
+                    <input type="text" id="name" class="form-control" placeholder="Type To Change your Name">
                 </tr>
 
                 <br>
 
                 <tr>
-                    <input type="text" class="form-control" placeholder="Type To Change your Email">
+                    <input type="text" id="email" class="form-control" placeholder="Type To Change your Email">
                 </tr>
                 <br>
                 <tr>
                     <input type="submit" class="btn btn-info" value="Change Info">
                 </tr>
+                </table>
 
                 <br>
 
                 <h5>Password Reset</h5>
                 <hr>
+                <!--  *******   -->
+                <table border="0" witdth="100%">
+                <tr>
+                    <input type="text" id="OldPassword" name="OldPassword" class="form-control" placeholder="Type Old Password">
+                </tr>
+                <br>
+                <tr>
+                    <input type="text" id="nPassword" name="nPassword" class="form-control" placeholder="Type New Password">
+                </tr>
+                <br>
+                <tr>
+                    <input type="text" id="cnPassword" name="cnPassword" class="form-control" placeholder="Retype New Password">
+                </tr>
+                <br>
+                <tr>
+                    <div id="hiddenUsername" hidden><%=user.username%></div>
+                    <input type="button" id="passwordChange" onclick="passwordChange()" class="btn btn-info" value="Reset Password">
 
-                <tr>
-                    <input type="text" class="form-control" placeholder="Type Old Password">
                 </tr>
-                <br>
-                <tr>
-                    <input type="text" class="form-control" placeholder="Type New Password">
-                </tr>
-                <br>
-                <tr>
-                    <input type="text" class="form-control" placeholder="Retype New Password">
-                </tr>
-                <br>
-                <tr>
-                    <input type="submit" class="btn btn-info" value="Reset Password">
-                </tr>
+                </table>
 
                 <br>
                 <h5>Set Privecy</h5>
                 <hr>
+                <!--  *******   -->
+                <table border="0" witdth="100%">
                 <tr>
                     
                         <b>Set Phone Number :</b>
@@ -186,10 +196,11 @@
                      <input type="submit" class="btn btn-info" value="Save Privecy"> 
                 </tr>
                 <br>
-            </table>
+            </table> 
         </div>
         <div class="col-sm-3"></div>
 
     </div>
+    <div id="test">Hello </div>
 </body>
 </html>

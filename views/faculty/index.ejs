@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,7 +24,7 @@
 
     <script type="text/javascript" src="/script/student.js"></script>
 
-    <title>Student Home</title>
+    <title>Faculty Home</title>
 
     <style>
 
@@ -37,6 +37,13 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
         
+        <!--
+        <form class="form-inline my-2 my-lg-0">
+            <div id="test3">dfgkf</div>
+            <input type="text" id="searchEmail" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button type="button" onclick="searchProfile()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        -->
         <form  method="POST" action="/facultyHome/searchProfile" class="form-inline my-2 my-lg-0">
             <input type="text" name="searchEmail" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" >
             <input type="submit" name="submit" class="btn btn-outline-success my-2 my-sm-0" value="Search">
@@ -51,7 +58,7 @@
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     
-                  <a class="nav-link" href="/studentHome">
+                  <a class="nav-link" href="/facultyHome">
                     <button class="btn btn-light">
                         Home
                     </button>
@@ -60,7 +67,7 @@
                 
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="/studentHome/timeLine">
+                    <a class="nav-link" href="/facultyHome/timeLine">
                         <button type="button" class="btn btn-light">
                            Time Line
                         </button>
@@ -68,7 +75,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/studentHome/chat">
+                    <a class="nav-link" href="/facultyHome/chat">
                         <button type="button" class="btn btn-light">
                             Messages <span class="badge badge-primary">4</span>
                         </button>
@@ -101,7 +108,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/studentHome/settings">
+                    <a class="nav-link" href="/facultyHome/settings">
                         <button class="btn btn-light">
                             Settings
                         </button>
@@ -132,22 +139,22 @@
                 </center>
                 <hr>
                 <center>
-                    <a href="/studentHome/studentProfile"><button class="btn btn-info">Profile</button></a> 
-                    <a href="/studentHome/editProfile"><button class="btn btn-info">Edit-Profile</button></a>
+                    <a href="/facultyHome/facultyProfile"><button class="btn btn-info">Profile</button></a> 
+                    <a href="/facultyHome/editProfile"><button class="btn btn-info">Edit-Profile</button></a>
                 </center>
                 
-                <hr>
-                
+                <hr> 
+                <!--
+                <button class="btn btn-light">Faculty Post</button>
+                <button class="btn btn-light">Alumni Post</button>
+                <button class="btn btn-light">Student Post</button>
+                <button class="btn btn-light">Job/Internship</button>
+                -->
                 <form method="POST" style="text-align: center;">
-                <!-- <button type="submit" class="btn btn-light" formaction="/facultyHome/facultyPost">Faculty Post</button>
-                <button type="submit" class="btn btn-light" formaction="/facultyHome/almuniPost">Alumni Post</button> 
+                <button type="submit" class="btn btn-light" formaction="/facultyHome/facultyPost">Faculty Post</button>
+                <button type="submit" class="btn btn-light" formaction="/facultyHome/almuniPost">Alumni Post</button>
                 <button type="submit" class="btn btn-light" formaction="/facultyHome/studentPost">Student Post</button>
-                <button type="submit" class="btn btn-light" formaction="/facultyHome/jobOrInternPost">Job/Internship</button> -->
-
-                <button type="submit" class="btn btn-light" formaction="/studentHome/facultyPost">Faculty Post</button>
-                <button type="submit" class="btn btn-light" formaction="/studentHome/almuniPost">Alumni Post</button> <!--********-->
-                <button type="submit" class="btn btn-light" formaction="/studentHome/studentPost">Student Post</button>
-                <button type="submit" class="btn btn-light" formaction="/studentHome/jobOrInternPost">Job/Internship</button>
+                <button type="submit" class="btn btn-light" formaction="/facultyHome/jobOrInternPost">Job/Internship</button>
                 </form>
                 <br>
                 <hr>
@@ -167,9 +174,9 @@
                                     <div id="username<%=i%>" hidden><%= data[i].username %></div>
                                     <text    class="name">
                                          <!-- <%= data[i].name %>  -->
-                                         <a href="/studentHome/viewProfile/<%= data[i].UserId %>"> <%= data[i].name %> </a> 
+                                         <a href="/facultyHome/viewProfile/<%= data[i].UserId %>"> <%= data[i].name %> </a>
                                     </text>
-                                    <span class="badge badge-pill badge-secondary"><%= data[i].type%></span> -- Sharing a Post On
+                                    <span class="badge badge-pill badge-secondary"><%= data[i].type%></span>
                                 </td>
                             </tr>
                             <!--Date Time Row-->

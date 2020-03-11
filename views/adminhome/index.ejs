@@ -16,6 +16,14 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+
+    <!--Another Links-->
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
     <!--Google Fonts Link-->
     <link href="https://fonts.googleapis.com/css?family=Cuprum|El+Messiri|Lobster&display=swap" rel="stylesheet">
 
@@ -87,7 +95,7 @@
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="fa fa-tachometer-alt"></i>
-              <span>Dashboard</span>
+              <span>Dashbord</span>
             </a>
           </li>
           <li class="sidebar-dropdown">
@@ -140,9 +148,9 @@
             </div>
           </li>
           <li class="sidebar-dropdown">
-            <a href="#">
+            <a href="/adminhome/blockList">
               <i class="fa fa-book"></i>
-              <span>Admins Panel</span>
+              <span>Block List User</span>
             </a>
             
           </li>
@@ -243,7 +251,7 @@
 
             <td>
                 <div class="showTotalPost">
-                    12
+                    <%= totalAdmin.TotalAdmin%>
                 </div>
             </td>
             
@@ -252,7 +260,49 @@
     </div>
 
 
-    
+    <h2>Today's Estimation</h2>
+    <hr>
+    <div id="home_quicklinks">
+      <a class="quicklink link1" href="/adminhome/studentPost">
+          <span class="ql_caption">
+              <span class="outer">
+                  <span class="inner">
+                      <h2>Students Post</h2>
+                      <h3><%= sPost.sPost %></h3>
+                  </span>
+              </span>
+          </span>
+          <span class="ql_top"></span>
+          <span class="ql_bottom"></span>
+      </a>
+
+      <a class="quicklink link2" href="/adminhome/facultyPost">
+          <span class="ql_caption">
+              <span class="outer">
+                  <span class="inner">
+                      <h2>Faculty Post</h2>
+                      <h3><%= fPost.fPost%></h3>
+                  </span>
+              </span>
+          </span>
+          <span class="ql_top"></span>
+          <span class="ql_bottom"></span>
+      </a>
+
+      <a class="quicklink link3" href="/adminhome/alumniPost">
+          <span class="ql_caption">
+              <span class="outer">
+                  <span class="inner">
+                      <h2>Alumni Post</h2>
+                      <h3><%= aPost.aPost%></h3>
+                  </span>
+              </span>
+          </span>
+          <span class="ql_top"></span>
+          <span class="ql_bottom"></span>
+      </a>
+
+
     </div>
 
   </main>

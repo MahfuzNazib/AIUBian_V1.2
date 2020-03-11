@@ -325,7 +325,13 @@ input[type=password]:placeholder {
 			<h2>User Login</h2>
 		</center>
       <input type="text" id="username" class="fadeIn second" name="username" placeholder="Username">
+      <%if(error.username){%>
+              <b style="color: red;"><%= error.username.msg%></b>
+      <%}%><br>
       <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+      <%if(error.password){%>
+              <b style="color: red;"><%= error.password.msg%></b>
+      <%}%><br>
       <input type="submit" class="fadeIn fourth" value="Sign In">
     </form>
 
