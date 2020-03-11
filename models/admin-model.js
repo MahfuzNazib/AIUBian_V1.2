@@ -202,5 +202,100 @@ module.exports = {
 				callback(false);
 			}
 		});
+	},
+
+	searchMember : function(name, callback){
+		var sql = "SELECT * FROM userinfo WHERE name = ? ";
+		db.getResults(sql, [name], function(result){
+			console.log(result);
+			if(result.length > 0){
+				callback(result);
+			}
+			else{
+				callback([]);
+			}
+		});
+	},
+
+	getTotalAdmin : function(callback){
+		var sql = "SELECT COUNT(adminId) as TotalAdmin from admin";
+		db.getResults(sql, null, function(results){
+			if(results.length > 0){
+				callback(results[0]);
+			}else{
+				callback(0);
+			}
+		});
+	},
+
+	totalStudentPost : function(callback){
+		var sql = "SELECT COUNT(postId) as sPost FROM post WHERE type1 = 'Student'";
+		db.getResults(sql, null, function(results){
+			if(results.length > 0){
+				callback(results[0]);
+			}else{
+				callback(0);
+			}
+		});
+	},
+
+	totalFacultyPost : function(callback){
+		var sql = "SELECT COUNT(postId) as fPost FROM post WHERE type1 = 'Faculty'";
+		db.getResults(sql, null, function(results){
+			if(results.length > 0){
+				callback(results[0]);
+			}else{
+				callback(0);
+			}
+		});
+	},
+
+	totalAlumniPost : function(callback){
+		var sql = "SELECT COUNT(postId) as aPost FROM post WHERE type1 = 'Alumni'";
+		db.getResults(sql, null, function(results){
+			if(results.length > 0){
+				callback(results[0]);
+			}else{
+				callback(0);
+			}
+		});
+	},
+
+	//Blocked User
+	blockUser : function(email, callback){
+		var sql = "UPDATE login SET blocked = 'true' WHERE email = ?";
+		db.execute(sql, [email], function(status){
+			if(status){
+				callback(true);
+			}
+			else{
+				callback(false);
+			}
+		});
+	},
+
+	//UnBlock User
+	unBlockUser : function(email, callback){
+		var sql = "UPDATE login SET blocked = 'false' WHERE email = ?";
+		db.execute(sql, [email], function(status){
+			if(status){
+				callback(true);
+			}
+			else{
+				callback(false);
+			}
+		});
+	},
+
+	blockList : function(callback){
+		var sql = "SELECT * FROM login WHERE blocked = 'true'";
+		db.getResults(sql, null, function(results){
+			if(results.length > 0){
+				callback(results);
+			}
+			else{
+				callback([]);
+			}
+		});
 	}
 }

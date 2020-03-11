@@ -36,7 +36,7 @@ module.exports= {
 	},
 
 	getByName : function (username, callback){
-		var sql = "select * from user where username = ?";
+		var sql = "select * from login where username = ?";
 		db.getResults(sql, [username], function(results){
 			if(results.length > 0){
 				callback(results);
@@ -85,6 +85,19 @@ module.exports= {
 		});
 	},
 
+	//Check Blocked
+
+	// checkedBlocked : function(user, callback){
+	// 	var sql ="SELECT * from login WHERE username=? and password=?";
+	// 	db.getResults(sql, [user.username, user.password], function(results){
+	// 		if(results.length > 0){
+				
+	// 			callback(results[0]);
+	// 		}else{
+	// 			callback(null);
+	// 		}
+	// 	});
+	// },
 	//check Username is available or Not
 
 	checkUsername : function(username, callback){
@@ -126,8 +139,8 @@ module.exports= {
 
 	//Register New Users
 	insertLogin: function(user, callback){
-		var sql = "insert into login values(?,?,?,?,?,?,?,?)";
-		db.execute(sql, [null, user.name, user.aiubId, user.username, user.password, user.email, user.department, user.type], function(status){
+		var sql = "insert into login values(?,?,?,?,?,?,?,?,?)";
+		db.execute(sql, [null, user.name, user.aiubId, user.username, user.password, user.email, user.department, user.type, user.blocked], function(status){
 			if(status){
 				callback(true);
 			}else{
@@ -162,6 +175,19 @@ module.exports= {
 		});
 	},
 
+	updateFaculty : function(data, callback){
+		var sql = "UPDATE userinfo SET name=?,aiub_id=?,phone=?,facebook=?,linkedin=?,department=?,joiningDate=?,workingDomain=?,skills=?,github=?,workingPlace=?,publishedPaper=?,portfolio=? WHERE email = ?";
+		db.execute(sql, [data.name, data.aiub_id, data.phone, data.facebook, data.linkedin, data.department, data.joiningDate, data.workingDomain, data.skills, data.github, data.workingPlace,data.publishedPaper,  data.portfolio,  data.email], function(status){
+			if(status){
+				console.log(status);
+				callback(true);
+			}else{
+				console.log(status);
+				callback(false);
+			}
+		});
+	},
+
 	updateProfilePicture : function(user, callback){
 		var sql = "UPDATE userinfo SET profilePicture = ? WHERE username = ? ";
 		db.execute(sql, [user.profilePicture, user.username], function(status){
@@ -185,12 +211,13 @@ module.exports= {
 		});
 	},
 
+
 	//Insert Post
 
 	insertPost : function(createPost, callback){
 		console.log(createPost);
 		var sql = "INSERT INTO post VALUES(?,?,?,?,?,?,?,?,?)";
-		db.execute(sql, [null, createPost.postDate,createPost.text, createPost.images, createPost.video, createPost.postLike, createPost.username, createPost.type, createPost.name], function(status){
+		db.execute(sql, [null, createPost.postDate,createPost.text, createPost.images, createPost.video, createPost.postLike, createPost.username, createPost.type, 0], function(status){
 			if(status){
 				
 				callback(true);
@@ -257,7 +284,7 @@ module.exports= {
 
 	showUserPosts : function(UserId, callback){
 		//var sql = "SELECT * FROM userinfo INNER JOIN post ON userinfo.username = post.username where userinfo.UserId = ? ORDER BY post.postId DESC ";
-		var sql = "SELECT * FROM post WHERE username = (SELECT username FROM userinfo WHERE UserId = ?) ORDER BY postId DESC";
+		var sql = "SELECT * FROM post WHERE username = (SELECT username FROM userinfo WHERE UserId = ?) ORDER BY postId ASC";
 		db.getResults(sql, [UserId], function(results){
 			if(results.length > 0){
 				//console.log(results);
@@ -322,22 +349,46 @@ module.exports= {
 		});
 	},
 
-	getNameAndType : function(username, callback){
-		var sql = "SELECT name, type FROM userinfo WHERE username = ?";
-		db.getResults(sql,[username], function(results){
-			if(results.length > 0){
-				callback(results[0]);
+	updatePassword : function(user, callback){
+		var sql = "UPDATE login SET password = ? WHERE username = ? ";
+		db.execute(sql, [user.nPass, user.username], function(status){
+			if(status){
+				callback(true);
 			}
 			else{
-				callback(null);
+				callback(false);
 			}
 		});
-
 	},
 
-	getAdminPost : function(callback){
-		var sql = "SELECT * FROM post WHERE type1 = 'Admin' ORDER BY postId DESC";
-		db.getResults(sql, null, function(results){
+	deletePost: function(postId, callback){
+		var sql = "delete from post where postId=?";
+		db.execute(sql, [postId], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
+	getAllData2 : function(type, callback){
+		var sql =  "SELECT * FROM userinfo INNER JOIN post ON userinfo.username = post.username and post.type1 = ? ORDER BY post.postId DESC";
+		db.getResults(sql, [type], function(results){
+			//console.log(results);
+			if(results.length > 0){
+				callback(results);
+			}
+			else{
+				callback([]);
+			}
+		});
+	},
+
+	
+	getAllDataByEmail : function(email, callback){
+		var sql =  "SELECT * FROM userinfo INNER JOIN post ON userinfo.username = post.username and userinfo.email = ? ORDER BY post.postId DESC";
+		db.getResults(sql, [email.email], function(results){
+			//console.log(results);
 			if(results.length > 0){
 				callback(results);
 			}

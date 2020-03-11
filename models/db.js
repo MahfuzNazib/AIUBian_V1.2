@@ -5,7 +5,7 @@ var getConnection = function( callback ){
 	  host     : '127.0.0.1',
 	  user     : 'root',
 	  password : '',
-	  database: 'aiubian_node'
+	  database: 'aiubian_node_2'
 	});
 
 	connection.connect(function(err) {
